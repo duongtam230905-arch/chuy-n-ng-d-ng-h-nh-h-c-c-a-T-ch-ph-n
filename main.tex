@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{article}
+
+%% ================= GÓI ĐỊNH DẠNG LÕI =================
+\usepackage{assets/style}
+\input{assets/macros.tex}
+
+%% ================= MỤC LỤC =================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  citecolor=teal,
+  urlcolor=teal,
+  pdftitle={Ứng dụng hình học của Tích phân - Toán 12},
+  pdfauthor={Thầy Tâm dạy Toán}
+}
+
+\title{}
+\date{}
+
+\begin{document}
+
+%% ================= TRANG BÌA =================
+\begin{titlepage}
+\newgeometry{margin=0cm}
+\begin{tikzpicture}[remember picture, overlay]
+  % --- Dải màu nền ---
+  \fill[navy] (current page.north west) rectangle ([yshift=-4cm]current page.north east);
+  \fill[teal] (current page.south west) rectangle ([yshift=1.2cm]current page.south east);
+
+  % --- Dòng tiêu đề chương trình, nằm giữa dải navy (band cao 4cm) ---
+  \node[anchor=north, text width=16cm, align=center, yshift=-2cm] at (current page.north)
+    {\color{white}\bfseries\Large CHƯƠNG TRÌNH GIÁO DỤC PHỔ THÔNG 2018 -- MÔN TOÁN 12};
+
+  % --- Tiêu đề chính ---
+  \node[anchor=north, text width=17cm, align=center, yshift=-9cm] at (current page.north)
+    {\color{navy}\bfseries\fontsize{30}{36}\selectfont ỨNG DỤNG HÌNH HỌC\\ CỦA TÍCH PHÂN};
+
+  % --- Phụ đề ---
+  \node[anchor=north, text width=15cm, align=center, yshift=-13.2cm] at (current page.north)
+    {\color{teal}\bfseries\Large Chuyên đề: Diện tích hình phẳng -- Thể tích vật thể};
+
+  % --- Đường kẻ phân cách ---
+  \draw[navylight, thick] ([yshift=-14.6cm]current page.north) ++(-3cm,0) -- ++(6cm,0);
+
+  % --- Thông tin biên soạn ---
+  \node[anchor=north, text width=14cm, align=center, yshift=-17cm] at (current page.north)
+    {\color{navy}\normalsize
+     Biên soạn: \textbf{Thầy Tâm dạy Toán} \\
+     Liên hệ (Zalo): \textbf{0837715745}};
+
+  % --- Dòng phiên bản, nằm giữa dải teal (band cao 1.2cm) ---
+  \node[anchor=south, text width=16cm, align=center, yshift=0.5cm] at (current page.south)
+    {\color{white}\small Phiên bản 1.0.0 \quad$\vert$\quad Tháng 9/2026};
+\end{tikzpicture}
+\end{titlepage}
+\restoregeometry
+
+%% ================= MỤC LỤC =================
+\newpage
+\tableofcontents
+\newpage
+
+%% ================= NỘI DUNG CÁC CHƯƠNG =================
+\input{chapters/00-loi-noi-dau.tex}
+\input{chapters/01-dien-tich-hinh-phang.tex}
+\input{chapters/02-the-tich-vat-the.tex}
+\input{chapters/03-tong-on-kiem-tra.tex}
+\input{chapters/04-phu-luc-cong-thuc.tex}
+
+\end{document}

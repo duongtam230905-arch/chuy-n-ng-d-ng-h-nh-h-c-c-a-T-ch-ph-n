@@ -1,0 +1,228 @@
+\section{Kiểm tra, đánh giá năng lực}
+
+\subsection{Sơ đồ tư duy tổng kết}
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    khoinode/.style={rectangle, rounded corners, draw=navy, thick, fill=tealbg,
+      text width=3.3cm, align=center, minimum height=1.3cm, font=\small},
+    khoirong/.style={rectangle, rounded corners, draw=navy, very thick, fill=navy,
+      text width=5cm, align=center, minimum height=1.2cm, font=\bfseries\small\color{white}},
+    khoimoi/.style={-Latex, navy, thick}
+  ]
+  \node[khoirong] (goc) at (-1.2,3.4) {ỨNG DỤNG HÌNH HỌC CỦA TÍCH PHÂN};
+
+  \node[khoinode, text width=4.2cm, fill=amberbg, draw=amber] (dt) at (-5.8,1.3) {\textbf{DIỆN TÍCH HÌNH PHẲNG}};
+  \node[khoinode, text width=4.2cm, fill=tealbg, draw=teal] (tt) at (3.4,1.3) {\textbf{THỂ TÍCH VẬT THỂ}};
+
+  \draw[khoimoi] (goc) -- (dt);
+  \draw[khoimoi] (goc) -- (tt);
+
+  \node[khoinode] (dt1) at (-7.6,-1.3) {1 đường cong:\\[2pt] $S=\int_a^b|f|\dx$};
+  \node[khoinode] (dt2) at (-4.0,-1.3) {2 đường cong:\\[2pt] $S=\int_a^b|f{-}g|\dx$};
+  \draw[khoimoi] (dt) -- (dt1);
+  \draw[khoimoi] (dt) -- (dt2);
+
+  \node[khoinode] (tt1) at (-0.2,-1.3) {Biết $S(x)$:\\[2pt] $V=\int_a^b S(x)\dx$};
+  \node[khoinode] (tt2) at (3.4,-1.3) {Tròn xoay 1 hàm:\\[2pt] $V=\pi\int f^2\dx$};
+  \node[khoinode] (tt3) at (7.0,-1.3) {Tròn xoay 2 hàm:\\[2pt] $V=\pi\int|f^2{-}g^2|\dx$};
+  \draw[khoimoi] (tt) -- (tt1);
+  \draw[khoimoi] (tt) -- (tt2);
+  \draw[khoimoi] (tt) -- (tt3);
+\end{tikzpicture}%
+}
+\end{center}
+
+\begin{hopchuy}[Ghi nhớ nhanh trước khi làm đề]
+\begin{itemize}[leftmargin=1cm]
+  \item Diện tích: \textbf{luôn có trị tuyệt đối}, vì diện tích không âm.
+  \item Thể tích theo thiết diện $S(x)$: \textbf{không có $\pi$}, không bình phương.
+  \item Thể tích khối tròn xoay: \textbf{có $\pi$}, có bình phương $f^2(x)$ -- không cần trị tuyệt đối vì $f^2\ge0$ tự nhiên.
+  \item Khối tròn xoay 2 đường cong: $\pi\int|f^2-g^2|\dx \ne \pi\int(f-g)^2\dx$.
+\end{itemize}
+\end{hopchuy}
+
+\newpage
+\subsection{Phần I -- Trắc nghiệm nhiều phương án lựa chọn}
+
+\begin{multicols}{2}
+\cauhoi Diện tích hình phẳng giới hạn bởi $y=x^2-2x$, trục $Ox$, $x=0$, $x=3$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac43$
+  \item $\dfrac83$
+  \item $2$
+  \item $\dfrac{16}{3}$
+\end{enumerate}
+
+\cauhoi Diện tích hình phẳng giới hạn bởi $y=x^3-x$, trục $Ox$ trên đoạn $[0;1]$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac14$
+  \item $\dfrac12$
+  \item $\dfrac34$
+  \item $1$
+\end{enumerate}
+
+\cauhoi Cho $\displaystyle\int_1^5 f(x)\dx=-3$ và $f(x)\le0$ trên $[1;5]$. Diện tích hình phẳng giới hạn bởi đồ thị $f$, $Ox$, $x=1$, $x=5$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $-3$
+  \item $0$
+  \item Không xác định được
+  \item $3$
+\end{enumerate}
+
+\cauhoi Diện tích hình phẳng giới hạn bởi $(P):y=x^2$ và đường thẳng $d:y=3x-2$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac13$
+  \item $\dfrac16$
+  \item $\dfrac12$
+  \item $1$
+\end{enumerate}
+
+\cauhoi Quay hình phẳng giới hạn bởi $y=x^3$, $Ox$, $x=0$, $x=1$ quanh $Ox$, thể tích khối tròn xoay bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{\pi}{7}$
+  \item $\dfrac{\pi}{5}$
+  \item $\dfrac{\pi}{9}$
+  \item $\dfrac{\pi}{3}$
+\end{enumerate}
+
+\cauhoi Vật thể có đáy là đoạn $[0;4]$ trên $Ox$, diện tích thiết diện tại hoành độ $x$ là $S(x)=x$. Thể tích vật thể bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $4$
+  \item $6$
+  \item $8$
+  \item $16$
+\end{enumerate}
+
+\cauhoi Quay hình phẳng giới hạn bởi $y=x$ và $y=x^3$ (trên $[0;1]$) quanh $Ox$, thể tích khối tròn xoay bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{4\pi}{21}$
+  \item $\dfrac{2\pi}{21}$
+  \item $\dfrac{\pi}{3}$
+  \item $\dfrac{4\pi}{7}$
+\end{enumerate}
+
+\cauhoi Một cổng chào hình Parabol cao $6$ m, rộng chân $8$ m. Diện tích mặt cổng bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $32$ m$^2$
+  \item $24$ m$^2$
+  \item $48$ m$^2$
+  \item $16$ m$^2$
+\end{enumerate}
+
+\cauhoi Diện tích hình phẳng giới hạn bởi $y=x^2-4$ và trục hoành (trên đoạn hai nghiệm) bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{16}{3}$
+  \item $\dfrac{32}{3}$
+  \item $8$
+  \item $\dfrac{64}{3}$
+\end{enumerate}
+
+\cauhoi Vật thể có đáy là hình tròn bán kính $1$, thiết diện vuông góc một đường kính cố định luôn là tam giác đều. Thể tích vật thể bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{2\sqrt3}{3}$
+  \item $\dfrac{4\sqrt3}{3}$
+  \item $\dfrac{8\sqrt3}{3}$
+  \item $\sqrt3$
+\end{enumerate}
+
+\cauhoi Cho $f(x)\ge g(x)$ trên $[0;3]$, biết $\displaystyle\int_0^3 f(x)\dx=10$, $\displaystyle\int_0^3 g(x)\dx=4$. Diện tích hình phẳng giới hạn bởi hai đồ thị bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $14$
+  \item $10$
+  \item $4$
+  \item $6$
+\end{enumerate}
+
+\cauhoi Thể tích khối cầu bán kính $3$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $36\pi$
+  \item $12\pi$
+  \item $27\pi$
+  \item $108\pi$
+\end{enumerate}
+
+\cauhoi Diện tích hình phẳng giới hạn bởi $y=\dfrac1x$, trục $Ox$, $x=1$, $x=e$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $e$
+  \item $1$
+  \item $e-1$
+  \item $\dfrac1e$
+\end{enumerate}
+
+\cauhoi Quay hình phẳng giới hạn bởi $y=2$, $Ox$, $x=0$, $x=5$ quanh $Ox$ (khối trụ), thể tích bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $10\pi$
+  \item $20\pi$
+  \item $40\pi$
+  \item $5\pi$
+\end{enumerate}
+
+\cauhoi Một bể nước hình bán cầu bán kính $2$ m. Thể tích bể bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{32\pi}{3}$
+  \item $8\pi$
+  \item $4\pi$
+  \item $\dfrac{16\pi}{3}$
+\end{enumerate}
+
+\cauhoi Công thức đúng để tính diện tích hình phẳng giới hạn bởi hai đường cong $y=f(x)$, $y=g(x)$ trên $[a;b]$ là
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\displaystyle\int_a^b[f(x)-g(x)]\dx$
+  \item $\displaystyle\int_a^b\ababs{f(x)-g(x)}\dx$
+  \item $\pi\displaystyle\int_a^b\ababs{f(x)-g(x)}\dx$
+  \item $\displaystyle\int_a^b\ababs{f^2(x)-g^2(x)}\dx$
+\end{enumerate}
+\end{multicols}
+
+\newpage
+\subsection{Phần II -- Trắc nghiệm Đúng/Sai}
+
+\cauhoi Cho hàm số $y=f(x)=x^2-4$, xét trên đoạn $[-3;3]$.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=1cm]
+  \item Phương trình $f(x)=0$ có hai nghiệm là $x=-2$ và $x=2$.
+  \item Trên khoảng $(-2;2)$ thì $f(x)\ge0$.
+  \item Diện tích hình phẳng giới hạn bởi $y=f(x)$, $Ox$, $x=-3$, $x=3$ bằng $\displaystyle\int_{-3}^3 f(x)\dx$.
+  \item Diện tích hình phẳng đó bằng $\dfrac{46}{3}$.
+\end{enumerate}
+
+\cauhoi Cho vật thể $(H)$ có đáy là hình tròn bán kính $3$, thiết diện vuông góc một đường kính cố định luôn là hình vuông.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=1cm]
+  \item Diện tích thiết diện tại hoành độ $x$ là $S(x)=4(9-x^2)$.
+  \item Thể tích vật thể được tính bởi $V=\pi\displaystyle\int_{-3}^3 S(x)\dx$.
+  \item Thể tích vật thể bằng $144$ (đvtt).
+  \item Nếu bán kính đáy tăng gấp đôi (thành $6$) thì thể tích tăng gấp $8$ lần.
+\end{enumerate}
+
+\cauhoi Cho $f(x)=\sqrt{9-x^2}$ (nửa đường tròn bán kính $3$), xét việc quay hình phẳng giới hạn bởi $f(x)$ và trục $Ox$ trên $[-3;3]$ quanh trục $Ox$.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=1cm]
+  \item Khối tròn xoay tạo thành là một khối cầu bán kính $3$.
+  \item Thể tích khối đó được tính bởi $\pi\displaystyle\int_{-3}^3(9-x^2)\dx$.
+  \item Thể tích khối đó bằng $36\pi$.
+  \item Nếu chỉ lấy nửa khối (ứng với $x\in[0;3]$) thì thể tích bằng $20\pi$.
+\end{enumerate}
+
+\newpage
+\subsection{Phần III -- Trắc nghiệm trả lời ngắn}
+
+\cauhoi Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^2-1$ và trục hoành (kết quả dạng phân số tối giản).
+
+\cauhoi Một cái lu đựng nước có dạng khối tròn xoay, tạo bởi quay đường cong $y=1+0{,}1x^2$ (đơn vị dm) quanh trục $Ox$, với $x\in[-5;5]$. Tính thể tích lu (theo lít, làm tròn đến hàng đơn vị).
+
+\cauhoi Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^3-3x^2+2$, trục hoành và hai đường thẳng $x=0$, $x=2$ (kết quả dạng phân số).
+
+\cauhoi Tính thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=x^2-1$, trục $Ox$, $x=1$, $x=2$ quanh trục $Ox$ (kết quả theo $\pi$, dạng phân số tối giản).
+
+\cauhoi Một khối gỗ hình cầu bán kính $2$ (tạo bởi quay nửa đường tròn $y=\sqrt{4-x^2}$ quanh $Ox$) bị khoét bỏ một lỗ hình trụ đồng trục bán kính $1$ xuyên suốt khối cầu (dọc theo trục $Ox$, từ $x=-2$ đến $x=2$). Tính thể tích phần gỗ còn lại (kết quả theo $\pi$).
+
+\clearpage
+\begin{hopchuy}[Đáp án]
+\textbf{Phần I:} 1-B, 2-A, 3-D, 4-B, 5-A, 6-C, 7-A, 8-A, 9-B, 10-B, 11-D, 12-A, 13-B, 14-B, 15-D, 16-B.
+
+\textbf{Phần II:} Câu 17: a-Đ, b-S ($f(x)\le0$ trên $(-2;2)$), c-S (cần trị tuyệt đối), d-Đ. \quad Câu 18: a-Đ, b-S (không có $\pi$), c-Đ, d-Đ (vì $V\propto R^3$, $2^3=8$). \quad Câu 19: a-Đ, b-Đ, c-Đ, d-S (nửa khối bằng $18\pi$, không phải $20\pi$).
+
+\textbf{Phần III:} Câu 20: $S=\dfrac43$. \quad Câu 21: $V=\dfrac{235\pi}{6}\approx123$ lít. \quad Câu 22: $S=\dfrac52$. \quad Câu 23: $V=\dfrac{38\pi}{15}$. \quad Câu 24: $V_{\text{gỗ}}=\dfrac{32\pi}{3}-4\pi=\dfrac{20\pi}{3}$.
+\end{hopchuy}
+
+\newpage

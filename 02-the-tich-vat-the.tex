@@ -1,0 +1,423 @@
+\section{Thể tích vật thể và khối tròn xoay}
+
+\subsection{Nền tảng lý thuyết \& Định lý cơ bản}
+
+\begin{hopdinhly}[Định lý]
+Cho vật thể $(H)$ nằm giữa hai mặt phẳng vuông góc với trục $Ox$ tại $x=a$ và $x=b$. Cắt $(H)$ bởi mặt phẳng vuông góc với $Ox$ tại điểm có hoành độ $x$ ($a\le x\le b$) được thiết diện có diện tích $S(x)$, trong đó $S(x)$ liên tục trên $[a;b]$. Khi đó thể tích của vật thể $(H)$ là
+\[
+V = \int_a^b S(x)\dx.
+\]
+\end{hopdinhly}
+
+\begin{hopchuy}[Phân biệt với công thức diện tích]
+Công thức thể tích vật thể \textbf{không có $\pi$} và \textbf{không bình phương} $S(x)$ -- vì $S(x)$ \emph{đã là diện tích} của thiết diện, không phải bán kính hay hàm số $f(x)$. Đây là điểm học sinh rất hay nhầm với công thức khối tròn xoay ở Định lý~2.
+\end{hopchuy}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[navy, thick] (0,0) .. controls (1,1.6) and (3,1.8) .. (5,0.6)
+        .. controls (5.3,0.3) and (5,-0.3) .. (4.6,-0.9)
+        .. controls (3,-1.6) and (1,-1.3) .. (0,0) -- cycle;
+  \foreach \x/\a/\b in {1.4/1.15/-1.05, 2.6/1.72/-1.15, 3.8/1.05/-0.55} {
+    \draw[teal, thick] (\x,\a) ellipse [x radius=0.12, y radius=\a*0.55+0.55];
+  }
+  \draw[dashed, shadowgray] (1.4,-2.1) -- (1.4,1.3) node[below=2.3cm]{\small $x_1$};
+  \draw[dashed, shadowgray] (2.6,-2.1) -- (2.6,2.0) node[below=2.5cm]{\small $x$};
+  \draw[dashed, shadowgray] (3.8,-2.1) -- (3.8,1.3) node[below=2.3cm]{\small $x_2$};
+  \draw[-Latex] (-1,-2.1) -- (6,-2.1) node[right]{$Ox$};
+  \node[teal] at (2.6,2.3) {$S(x)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{hopdinhly}[Định lý]
+Cho hàm số $y=f(x)$ liên tục, không âm trên $[a;b]$. Thể tích khối tròn xoay tạo thành khi quay hình phẳng giới hạn bởi đồ thị $y=f(x)$, trục $Ox$ và hai đường thẳng $x=a$, $x=b$ quanh trục $Ox$ là
+\[
+V = \pi\int_a^b f^2(x)\dx.
+\]
+\end{hopdinhly}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9, declare function={f(\x)=0.35*\x^2-0.9*\x+2.4;}]
+  \begin{axis}[
+      axis lines=middle, xlabel={$x$}, ylabel={$y$},
+      xmin=-0.5, xmax=5, ymin=-1.5, ymax=3.2,
+      xtick={0.5,4}, ytick=\empty, width=8.5cm, height=6cm,
+      axis line style={-Latex}, samples=100, hide y axis]
+    \addplot [domain=0.5:4, navy, thick, fill=navylight, fill opacity=0.35] {f(x)} \closedcycle;
+    \draw[navy, thick] (axis cs:0.5,0) ellipse [x radius=0.06, y radius=1.05] ;
+    \draw[navy, thick] (axis cs:4,0) ellipse [x radius=0.06, y radius=0.4] ;
+  \end{axis}
+\end{tikzpicture}
+
+\small (Khối tròn xoay tạo thành khi quay miền tô màu quanh trục $Ox$)
+\end{center}
+
+\begin{hopchuy}[Vì sao không cần trị tuyệt đối]
+Vì $f^2(x)\ge0$ với mọi $x$ nên $\displaystyle V=\pi\int_a^b f^2(x)\dx$ luôn không âm một cách tự nhiên -- \textbf{không cần đặt dấu trị tuyệt đối} như công thức tính diện tích.
+\end{hopchuy}
+
+\newpage
+\subsection{Dạng 1: Tính thể tích vật thể có diện tích mặt cắt ngang \texorpdfstring{$S(x)$}{S(x)}}
+
+\begin{hopphuongphap}
+\begin{enumerate}[leftmargin=1cm]
+  \item Dựa vào giả thiết, biểu diễn kích thước thiết diện (cạnh hình vuông, cạnh tam giác đều, bán kính nửa hình tròn,\ldots) tại hoành độ $x$ theo $x$.
+  \item Dùng công thức diện tích hình học tương ứng để lập hàm số $S(x)$.
+  \item Tính $\displaystyle V=\int_a^b S(x)\dx$.
+\end{enumerate}
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Thiết diện hình vuông)]
+Cho vật thể $(H)$ có đáy là hình tròn bán kính $R$. Thiết diện của $(H)$ cắt bởi mặt phẳng vuông góc với một đường kính cố định của đáy luôn là hình vuông. Tính thể tích của $(H)$.
+\end{hopvidu}
+\begin{loigiai}
+Chọn hệ trục $Oxy$ với gốc $O$ là tâm đường tròn đáy, trục $Ox$ trùng với đường kính cố định. Phương trình đường tròn đáy: $x^2+y^2=R^2$.
+
+Tại hoành độ $x\in[-R;R]$, dây cung vuông góc với $Ox$ có độ dài $2y=2\sqrt{R^2-x^2}$ -- đây chính là cạnh của hình vuông thiết diện. Vậy
+\[
+S(x) = \left(2\sqrt{R^2-x^2}\right)^2 = 4(R^2-x^2).
+\]
+\[
+V=\int_{-R}^{R} 4(R^2-x^2)\dx = 4\left.\left(R^2x-\frac{x^3}{3}\right)\right|_{-R}^{R} = 8\left(R^3-\frac{R^3}{3}\right).
+\]
+\ketqua{V=\frac{16R^3}{3}}
+\end{loigiai}
+
+\begin{hopvidu}[(Thiết diện tam giác đều)]
+Cho vật thể $(H)$ có đáy là hình phẳng giới hạn bởi đường cong $y=\sqrt{x}$, trục hoành và đường thẳng $x=4$. Thiết diện của $(H)$ cắt bởi mặt phẳng vuông góc với $Ox$ tại điểm hoành độ $x$ là một tam giác đều có cạnh bằng độ dài đoạn nối từ trục $Ox$ đến đồ thị (tức bằng $y=\sqrt{x}$). Tính thể tích $(H)$.
+\end{hopvidu}
+\begin{loigiai}
+Tam giác đều cạnh $a$ có diện tích $S=\dfrac{\sqrt3}{4}a^2$. Ở đây $a=\sqrt{x}$ nên $a^2=x$, do đó
+\[
+S(x)=\frac{\sqrt3}{4}x.
+\]
+\[
+V=\int_0^4 \frac{\sqrt3}{4}x\dx = \frac{\sqrt3}{4}\left.\frac{x^2}{2}\right|_0^4 = \frac{\sqrt3}{4}\cdot8.
+\]
+\ketqua{V=2\sqrt3 \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Thiết diện nửa hình tròn)]
+Cho vật thể $(H)$ có đáy là hình tròn bán kính $R=2$. Thiết diện của $(H)$ cắt bởi mặt phẳng vuông góc với một đường kính cố định luôn là nửa hình tròn, có đường kính bằng dây cung tương ứng của đáy. Tính thể tích $(H)$.
+\end{hopvidu}
+\begin{loigiai}
+Với đường tròn đáy $x^2+y^2=4$, dây cung tại hoành độ $x$ có độ dài $2\sqrt{4-x^2}$, đây là \textbf{đường kính} của nửa hình tròn thiết diện, nên bán kính thiết diện là $r(x)=\sqrt{4-x^2}$. Diện tích nửa hình tròn:
+\[
+S(x) = \frac12\pi r^2(x) = \frac{\pi}{2}(4-x^2).
+\]
+\[
+V=\int_{-2}^2 \frac{\pi}{2}(4-x^2)\dx = \pi\int_0^2(4-x^2)\dx = \pi\left.\left(4x-\frac{x^3}{3}\right)\right|_0^2 = \pi\left(8-\frac83\right).
+\]
+\ketqua{V=\frac{16\pi}{3} \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Thiết diện hình vuông từ hai đường cong)]
+Cho vật thể $(H)$ có đáy là hình phẳng giới hạn bởi hai đường cong $y=\sqrt{x}$ và $y=\dfrac{x}{2}$ trên đoạn $[0;4]$. Thiết diện của $(H)$ cắt bởi mặt phẳng vuông góc với $Ox$ luôn là hình vuông có cạnh bằng bề rộng của đáy tại hoành độ đó. Tính thể tích $(H)$.
+\end{hopvidu}
+\begin{loigiai}
+Trên $(0;4)$, ta có $\sqrt{x}\ge \dfrac{x}{2}$ (đã xét dấu ở Bài 1), nên cạnh hình vuông là
+\[
+a(x)=\sqrt{x}-\frac{x}{2}, \qquad S(x)=a^2(x)=x - x^{3/2}+\frac{x^2}{4}.
+\]
+\[
+V=\int_0^4\left(x-x^{3/2}+\frac{x^2}{4}\right)\dx = \left.\left(\frac{x^2}{2}-\frac{2}{5}x^{5/2}+\frac{x^3}{12}\right)\right|_0^4 = 8-\frac{64}{5}+\frac{16}{3}.
+\]
+\ketqua{V=\frac{8}{15} \ (\text{đvtt})}
+\end{loigiai}
+
+\newpage
+\subsection{Dạng 2: Khối tròn xoay giới hạn bởi 1 đường cong và trục \texorpdfstring{$Ox$}{Ox}}
+
+\begin{hopphuongphap}
+Áp dụng trực tiếp công thức $\displaystyle V=\pi\int_a^b f^2(x)\dx$. Kỹ năng cần rèn luyện là \textbf{bình phương $f(x)$ đúng cách} (khai triển hằng đẳng thức, dùng công thức hạ bậc với hàm lượng giác, hoặc quy tắc lũy thừa với hàm mũ) trước khi lấy nguyên hàm.
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Hàm căn thức)]
+Tính thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=\sqrt{x}$, trục $Ox$, $x=0$, $x=4$ quanh trục $Ox$.
+\end{hopvidu}
+\begin{loigiai}
+\[
+V=\pi\int_0^4 \left(\sqrt{x}\right)^2\dx = \pi\int_0^4 x\dx = \pi\left.\frac{x^2}{2}\right|_0^4.
+\]
+\ketqua{V=8\pi \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Hàm đa thức)]
+Tính thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=x^2$, trục $Ox$, $x=0$, $x=2$ quanh trục $Ox$.
+\end{hopvidu}
+\begin{loigiai}
+\[
+V=\pi\int_0^2 (x^2)^2\dx = \pi\int_0^2 x^4\dx = \pi\left.\frac{x^5}{5}\right|_0^2.
+\]
+\ketqua{V=\frac{32\pi}{5} \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Hàm lượng giác -- công thức hạ bậc)]
+Tính thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=\sin x$, trục $Ox$, $x=0$, $x=\pi$ quanh trục $Ox$.
+\end{hopvidu}
+\begin{loigiai}
+Dùng công thức hạ bậc $\sin^2x = \dfrac{1-\cos2x}{2}$:
+\[
+V=\pi\int_0^\pi \sin^2x\dx = \pi\int_0^\pi \frac{1-\cos2x}{2}\dx = \frac{\pi}{2}\left.\left(x-\frac{\sin2x}{2}\right)\right|_0^\pi = \frac{\pi}{2}(\pi-0).
+\]
+\ketqua{V=\frac{\pi^2}{2} \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Hàm mũ)]
+Tính thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=e^x$, trục $Ox$, trục $Oy$ và $x=1$ quanh trục $Ox$.
+\end{hopvidu}
+\begin{loigiai}
+\[
+V=\pi\int_0^1 (e^x)^2\dx = \pi\int_0^1 e^{2x}\dx = \pi\left.\frac{e^{2x}}{2}\right|_0^1 = \frac{\pi}{2}\left(e^2-1\right).
+\]
+\ketqua{V=\frac{\pi(e^2-1)}{2} \ (\text{đvtt})}
+\end{loigiai}
+
+\newpage
+\subsection{Dạng 3: Khối tròn xoay tạo bởi hình phẳng giới hạn bởi 2 đường cong}
+
+\begin{hopphuongphap}
+Khi quay quanh $Ox$ hình phẳng giới hạn bởi $y=f(x)$, $y=g(x)$ (với $f,g\ge0$ và $f\ge g$ trên $[a;b]$), khối tròn xoay tạo thành có dạng \textbf{"vòng đệm"} (washer): phần thể tích do $f$ quét ra, trừ đi phần lõi do $g$ quét ra.
+\[
+V=\pi\int_a^b \ababs{f^2(x)-g^2(x)}\dx.
+\]
+\end{hopphuongphap}
+
+\begin{hopchuy}[Sai lầm kinh điển]
+Học sinh rất hay nhầm lẫn giữa hai biểu thức sau:
+\[
+\pi\int_a^b\ababs{f^2(x)-g^2(x)}\dx \qquad \text{(ĐÚNG)} \qquad\text{và}\qquad \pi\int_a^b (f(x)-g(x))^2\dx \qquad \text{(SAI)}.
+\]
+Hai biểu thức này \textbf{không bằng nhau} vì $(f-g)^2 = f^2-2fg+g^2 \ne f^2-g^2$ (trừ trường hợp $g\equiv0$). Bản chất hình học: khối tròn xoay của $(f-g)$ mô tả một vật thể hoàn toàn khác với khối vòng đệm tạo bởi $f$ và $g$.
+\end{hopchuy}
+
+\begin{hopvidu}[(Hai đường parabol/đường thẳng cơ bản)]
+Tính thể tích khối tròn xoay khi quay quanh $Ox$ hình phẳng giới hạn bởi $y=x$ và $y=x^2$.
+\end{hopvidu}
+\begin{loigiai}
+Giao điểm: $x=x^2 \Leftrightarrow x=0$ hoặc $x=1$. Trên $(0;1)$: $x\ge x^2\ge0$, nên $f(x)=x$, $g(x)=x^2$.
+\[
+V=\pi\int_0^1\left(x^2-x^4\right)\dx = \pi\left.\left(\frac{x^3}{3}-\frac{x^5}{5}\right)\right|_0^1 = \pi\left(\frac13-\frac15\right).
+\]
+\ketqua{V=\frac{2\pi}{15} \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Căn thức và đa thức)]
+Tính thể tích khối tròn xoay khi quay quanh $Ox$ hình phẳng giới hạn bởi $y=\sqrt{x}$ và $y=x^2$.
+\end{hopvidu}
+\begin{loigiai}
+Giao điểm: $\sqrt{x}=x^2 \Leftrightarrow x=0$ hoặc $x=1$. Trên $(0;1)$: $\sqrt{x}\ge x^2$ (thử $x=0{,}5$: $0{,}707>0{,}25$).
+\[
+V=\pi\int_0^1\left(x-x^4\right)\dx = \pi\left.\left(\frac{x^2}{2}-\frac{x^5}{5}\right)\right|_0^1 = \pi\left(\frac12-\frac15\right).
+\]
+\ketqua{V=\frac{3\pi}{10} \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Parabol và đường thẳng cắt nhau tại hai điểm)]
+Tính thể tích khối tròn xoay khi quay quanh $Ox$ hình phẳng giới hạn bởi $(P): y=4-x^2$ và đường thẳng $d: y=x+2$.
+\end{hopvidu}
+\begin{loigiai}
+Giao điểm: $4-x^2=x+2 \Leftrightarrow x^2+x-2=0 \Leftrightarrow x=-2$ hoặc $x=1$. Trên $(-2;1)$: tại $x=0$, $(P)=4 > d=2\ge0$, và cả hai hàm đều không âm trên đoạn này nên áp dụng trực tiếp công thức vòng đệm.
+\[
+f^2(x)-g^2(x) = (4-x^2)^2-(x+2)^2 = (16-8x^2+x^4)-(x^2+4x+4) = x^4-9x^2-4x+12.
+\]
+Gọi $F(x)=\dfrac{x^5}{5}-3x^3-2x^2+12x$. Ta có $F(1)=\dfrac{36}{5}$, $F(-2)=-\dfrac{72}{5}$, suy ra
+\[
+\int_{-2}^1\left(x^4-9x^2-4x+12\right)\dx = F(1)-F(-2) = \frac{36}{5}+\frac{72}{5}=\frac{108}{5}.
+\]
+\ketqua{V=\frac{108\pi}{5} \ (\text{đvtt})}
+\end{loigiai}
+
+\begin{hopvidu}[(Ứng dụng lại cặp hàm số đã học ở Bài 1)]
+Tính thể tích khối tròn xoay khi quay quanh $Ox$ hình phẳng giới hạn bởi $y=\sqrt{x}$ và $y=\dfrac{x}{2}$ trên đoạn $[0;4]$.
+\end{hopvidu}
+\begin{loigiai}
+Đây chính là cặp hàm số đã dùng để tính diện tích (lát gạch hồ cảnh) ở Bài 1. Trên $(0;4)$, $\sqrt{x}\ge\dfrac x2\ge0$.
+\[
+V=\pi\int_0^4\left(x-\frac{x^2}{4}\right)\dx = \pi\left.\left(\frac{x^2}{2}-\frac{x^3}{12}\right)\right|_0^4 = \pi\left(8-\frac{16}{3}\right).
+\]
+\ketqua{V=\frac{8\pi}{3} \ (\text{đvtt})}
+\end{loigiai}
+
+\newpage
+\subsection{Dạng 4: Ứng dụng thực tiễn -- Tối ưu hóa trong thiết kế}
+
+\begin{hopphuongphap}
+\begin{enumerate}[leftmargin=1cm]
+  \item Chọn trục quay hợp lý (thường trùng với trục đối xứng của vật thể).
+  \item Xác định đường sinh (đường cong tạo ra bề mặt khi quay) dựa trên kích thước thực tế.
+  \item Tính thể tích bằng công thức khối tròn xoay, sau đó đổi đơn vị nếu cần (1 dm$^3$ = 1 lít).
+\end{enumerate}
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Kiểm chứng công thức thể tích khối nón)]
+Một hình nón có bán kính đáy $R$ và chiều cao $h$ được tạo thành bằng cách quay đoạn thẳng $y=\dfrac{R}{h}x$ ($x\in[0;h]$) quanh trục $Ox$. Dùng tích phân, hãy tính thể tích khối nón theo $R,h$ và đối chiếu với công thức đã học ở lớp dưới.
+\end{hopvidu}
+\begin{loigiai}
+\[
+V=\pi\int_0^h\left(\frac{R}{h}x\right)^2\dx = \frac{\pi R^2}{h^2}\int_0^h x^2\dx = \frac{\pi R^2}{h^2}\cdot\frac{h^3}{3}.
+\]
+\ketqua{V=\frac13\pi R^2 h}
+Kết quả trùng khớp với công thức thể tích khối nón đã học ở lớp dưới -- đây là một minh chứng cho tính đúng đắn của phương pháp tích phân.
+\end{loigiai}
+
+\begin{hopvidu}[(Thùng đựng rượu vang)]
+Một thùng đựng rượu có dạng khối tròn xoay, tạo thành khi quay hình phẳng giới hạn bởi parabol $y=2-0{,}5x^2$ (đơn vị dm) và trục hoành quanh trục $Ox$, với $x\in[-2;2]$. Tính thể tích thùng (theo lít, biết $1\text{dm}^3=1$ lít).
+\end{hopvidu}
+\begin{loigiai}
+\[
+y^2=(2-0{,}5x^2)^2 = 4-2x^2+0{,}25x^4.
+\]
+\begin{align*}
+V&=\pi\int_{-2}^{2}\left(4-2x^2+0{,}25x^4\right)\dx = 2\pi\int_0^2\left(4-2x^2+0{,}25x^4\right)\dx \\
+ &= 2\pi\left.\left(4x-\frac{2x^3}{3}+0{,}05x^5\right)\right|_0^2 = 2\pi\left(8-\frac{16}{3}+1{,}6\right).
+\end{align*}
+\ketqua{V=\frac{128\pi}{15}\approx26{,}8 \text{ lít}}
+\end{loigiai}
+
+\begin{hopvidu}[(Bồn chứa hình chỏm parabol)]
+Một chiếc chậu có dạng khối tròn xoay, tạo thành khi quay đường cong $x=\dfrac{\sqrt{y}}{2}$ (đơn vị dm) quanh trục $Oy$, với $0\le y\le 4$. Tính thể tích của chậu (theo lít).
+\end{hopvidu}
+\begin{loigiai}
+Khi quay quanh trục $Oy$, công thức thể tích tương tự Định lý 2 nhưng đổi vai trò $x\leftrightarrow y$:
+\[
+V=\pi\int_0^4 x^2\dif{y} = \pi\int_0^4 \frac{y}{4}\dif{y} = \frac{\pi}{4}\left.\frac{y^2}{2}\right|_0^4 = \frac{\pi}{4}\cdot8.
+\]
+\ketqua{V=2\pi\approx6{,}28 \text{ lít}}
+\end{loigiai}
+
+\begin{hopvidu}[(Ly thủy tinh hình cong)]
+Một chiếc ly có thành trong dạng khối tròn xoay, tạo thành khi quay đường cong $x=\dfrac{y^2}{16}$ (đơn vị cm) quanh trục $Oy$, với $0\le y\le8$ ($y$ là chiều cao tính từ đáy ly). Tính thể tích ly (theo ml, biết $1\text{cm}^3=1$ ml).
+\end{hopvidu}
+\begin{loigiai}
+\[
+V=\pi\int_0^8 x^2\dif{y} = \pi\int_0^8 \frac{y^4}{256}\dif{y} = \frac{\pi}{256}\left.\frac{y^5}{5}\right|_0^8 = \frac{\pi}{256}\cdot\frac{32768}{5}.
+\]
+\ketqua{V=\frac{128\pi}{5}\approx80{,}4 \text{ ml}}
+\end{loigiai}
+
+\newpage
+\subsection{Bài tập tự luyện}
+
+\subsubsection*{Phần I -- Trắc nghiệm nhiều phương án lựa chọn}
+
+\begin{multicols}{2}
+\cauhoi Thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=x$, $Ox$, $x=0$, $x=2$ quanh $Ox$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{8\pi}{3}$
+  \item $\dfrac{4\pi}{3}$
+  \item $2\pi$
+  \item $\dfrac{8}{3}$
+\end{enumerate}
+
+\cauhoi Thể tích vật thể có $S(x)=x^2+1$ trên $[0;2]$ bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{14}{3}$
+  \item $\dfrac{8}{3}$
+  \item $6$
+  \item $\dfrac{10}{3}$
+\end{enumerate}
+
+\cauhoi Quay hình phẳng giới hạn bởi $y=\cos x$, $Ox$, $x=0$, $x=\dfrac{\pi}{2}$ quanh $Ox$, thể tích khối tròn xoay bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{\pi^2}{4}$
+  \item $\dfrac{\pi}{2}$
+  \item $\pi^2$
+  \item $\dfrac{\pi^2}{2}$
+\end{enumerate}
+
+\cauhoi Thể tích khối cầu bán kính $R$ (tạo bởi quay nửa đường tròn $y=\sqrt{R^2-x^2}$ quanh $Ox$) bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{4}{3}\pi R^3$
+  \item $\dfrac{2}{3}\pi R^3$
+  \item $4\pi R^2$
+  \item $\pi R^3$
+\end{enumerate}
+
+\cauhoi Quay hình phẳng giới hạn bởi $y=e^x$, $Ox$, $Oy$, $x=1$ quanh $Ox$, thể tích bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{\pi(e^2-1)}{2}$
+  \item $\pi(e-1)$
+  \item $\dfrac{\pi e^2}{2}$
+  \item $\pi(e^2-1)$
+\end{enumerate}
+
+\cauhoi Công thức đúng để tính thể tích khối tròn xoay giới hạn bởi 2 đường cong $f(x)\ge g(x)\ge0$ trên $[a;b]$, quay quanh $Ox$, là
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\pi\displaystyle\int_a^b[f(x)-g(x)]^2\dx$
+  \item $\pi\displaystyle\int_a^b[f^2(x)-g^2(x)]\dx$
+  \item $\displaystyle\int_a^b[f^2(x)-g^2(x)]\dx$
+  \item $\pi\displaystyle\int_a^b[f(x)-g(x)]\dx$
+\end{enumerate}
+
+\cauhoi Thể tích khối tròn xoay giới hạn bởi $y=x^2$ và $y=4$, quay quanh $Ox$ (trên miền $y=x^2$ nằm dưới $y=4$) bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{512\pi}{5}$
+  \item $\dfrac{256\pi}{5}$
+  \item $\dfrac{128\pi}{5}$
+  \item $32\pi$
+\end{enumerate}
+
+\cauhoi Vật thể có đáy là hình tròn bán kính $2$, thiết diện vuông góc một đường kính cố định luôn là tam giác đều. Thể tích vật thể bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{32\sqrt3}{3}$
+  \item $\dfrac{16\sqrt3}{3}$
+  \item $8\sqrt3$
+  \item $\dfrac{64\sqrt3}{3}$
+\end{enumerate}
+
+\cauhoi Quay hình phẳng giới hạn bởi $y=\sqrt{x}$, $y=x$ quanh $Ox$, thể tích khối tròn xoay bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $\dfrac{\pi}{6}$
+  \item $\dfrac{\pi}{3}$
+  \item $\dfrac{2\pi}{15}$
+  \item $\dfrac{\pi}{2}$
+\end{enumerate}
+
+\cauhoi Một hình nón có bán kính đáy $3$ và chiều cao $4$. Thể tích khối nón (tính bằng tích phân) bằng
+\begin{enumerate}[label=\textbf{\Alph*.}, leftmargin=0.9cm]
+  \item $12\pi$
+  \item $36\pi$
+  \item $16\pi$
+  \item $4\pi$
+\end{enumerate}
+\end{multicols}
+
+\subsubsection*{Phần II -- Trắc nghiệm Đúng/Sai}
+
+\cauhoi Cho hình phẳng $(D)$ giới hạn bởi $y=x^2$ và $y=2x$.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=1cm]
+  \item Hoành độ giao điểm của hai đồ thị là $x=0$ và $x=2$.
+  \item Trên $(0;2)$, $2x\ge x^2$.
+  \item Thể tích khối tròn xoay khi quay $(D)$ quanh $Ox$ được tính bởi $\pi\displaystyle\int_0^2(2x-x^2)^2\dx$.
+  \item Thể tích khối tròn xoay khi quay $(D)$ quanh $Ox$ bằng $\dfrac{64\pi}{15}$.
+\end{enumerate}
+
+\cauhoi Cho vật thể $(H)$ có đáy là hình tròn bán kính $1$, thiết diện vuông góc một đường kính cố định luôn là hình vuông.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=1cm]
+  \item Diện tích thiết diện tại hoành độ $x$ là $S(x)=4(1-x^2)$.
+  \item Thể tích vật thể được tính bởi $\pi\displaystyle\int_{-1}^1 S(x)\dx$.
+  \item Thể tích vật thể bằng $\dfrac{16}{3}$.
+  \item Nếu thay thiết diện hình vuông bằng nửa hình tròn thì thể tích sẽ giảm đi.
+\end{enumerate}
+
+\subsubsection*{Phần III -- Trắc nghiệm trả lời ngắn}
+
+\cauhoi Tính thể tích khối tròn xoay khi quay hình phẳng giới hạn bởi $y=\ln x$, $Ox$, $x=e$ quanh trục $Ox$ (kết quả theo $\pi$, làm tròn hệ số đến hàng phần trăm nếu cần).
+
+\cauhoi Một chiếc phễu có dạng hình nón (tạo bởi quay đoạn thẳng $y=2x$, $x\in[0;5]$ quanh $Ox$, đơn vị cm). Tính thể tích phễu (theo cm$^3$, làm tròn đến hàng đơn vị, lấy $\pi\approx3{,}14$).
+
+\cauhoi Vật thể có đáy là hình phẳng giới hạn bởi $y=4-x^2$ và trục hoành, thiết diện vuông góc trục $Ox$ luôn là hình vuông có cạnh bằng $\dfrac12$ bề rộng đáy tại hoành độ đó. Tính thể tích vật thể (kết quả dạng phân số tối giản).
+
+\cauhoi Một bể cá hình trụ tròn xoay được tạo bởi quay hình chữ nhật có các cạnh $y=3$ (dm), $x\in[0;5]$ quanh trục $Ox$. Tính thể tích bể (theo lít).
+
+\clearpage
+\begin{hopchuy}[Đáp án]
+\textbf{Phần I:} 1-A, 2-A, 3-A, 4-A, 5-A, 6-B, 7-B, 8-A, 9-A, 10-A.
+
+\textbf{Phần II:} Câu 11: a-Đ, b-Đ, c-S (phải là $\pi\displaystyle\int_0^2(4x^2-x^4)\dx$, không phải $(2x-x^2)^2$), d-Đ (vì $\pi\displaystyle\int_0^2(4x^2-x^4)\dx=\pi\left(\dfrac{32}{3}-\dfrac{32}{5}\right)=\dfrac{64\pi}{15}$). \quad Câu 12: a-Đ, b-S (công thức $V=\displaystyle\int_{-1}^1 S(x)\dx$ không nhân $\pi$), c-Đ, d-Đ (nửa hình tròn cho $V=\dfrac{2\pi}{3}\approx2{,}09 < \dfrac{16}{3}\approx5{,}33$).
+
+\textbf{Phần III:} Câu 13: $V=\pi(e-2)$ (đvtt) $\approx0{,}72\pi$. \quad Câu 14: $V=\dfrac13\pi(10)^2(5)=\dfrac{500\pi}{3}\approx523{,}6\Rightarrow524$ cm$^3$. \quad Câu 15: $V=\dfrac{128}{15}$. \quad Câu 16: $V=\pi\cdot3^2\cdot5=45\pi\approx141{,}4$ lít.
+\end{hopchuy}
+
+\newpage

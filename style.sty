@@ -1,0 +1,132 @@
+%% ============================================================
+%%  style.sty
+%%  Gói định dạng lõi cho chuyên đề "Ứng dụng hình học của Tích phân"
+%%  Biên soạn: Thầy Tâm dạy Toán
+%% ============================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assets/style}[2026/09/14 v1.0.0 Style cho chuyen de Tich phan 12]
+
+%% ---------- 1. Bảng mã & Ngôn ngữ (PDFLaTeX + gói vietnam) ----------
+%% GHI CHÚ: gói `vietnam` thuộc bộ `vntex` -- cần đảm bảo `vntex` đã
+%% được cài đặt (mặc định có sẵn trên Overleaf và hầu hết bản TeX Live/
+%% MiKTeX đầy đủ). Biên dịch bằng: pdflatex main.tex (chạy 2 lần).
+\RequirePackage[utf8]{vietnam}
+\RequirePackage{mathptmx} % Font giống Times New Roman
+
+%% ---------- 2. Bố cục trang ----------
+\RequirePackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,headheight=15pt]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{multicol}
+\RequirePackage{xcolor}
+
+%% ---------- 3. Toán học ----------
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{bm}
+
+%% ---------- 4. Đồ họa thuần túy (không dùng includegraphics) ----------
+\RequirePackage{tikz}
+\usetikzlibrary{calc,arrows.meta,positioning,patterns,decorations.markings,intersections,3d}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%% ---------- 5. Hộp trình bày sư phạm ----------
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+
+%% ---------- 6. Bảng màu chủ đạo ----------
+\definecolor{navy}{HTML}{1C2E58}
+\definecolor{navylight}{HTML}{A9B8CE}
+\definecolor{teal}{HTML}{0F7A73}
+\definecolor{tealbg}{HTML}{E8F5F3}
+\definecolor{amber}{HTML}{B8720A}
+\definecolor{amberbg}{HTML}{FCF3E3}
+\definecolor{shadowgray}{HTML}{D7D7D7}
+\definecolor{softgray}{HTML}{F5F5F5}
+
+%% ---------- 7. Header / Footer ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small\bfseries\color{navy} Ứng dụng hình học của Tích phân}
+\fancyhead[R]{\small\color{navy} Toán 12 -- GDPT 2018}
+\fancyfoot[C]{\small\thepage}
+\fancyfoot[L]{\small\itshape Thầy Tâm dạy Toán}
+\fancyfoot[R]{\small\itshape Zalo: 0837715745}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+%% ---------- 8. Tiêu đề mục ----------
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection.}{0.5em}{}[{\color{navylight}\titlerule[1pt]}]
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{teal}}
+  {\thesubsection.}{0.5em}{}
+
+%% ---------- 9. Bộ đếm tự động (theo yêu cầu QA: không gõ chay số thứ tự) ----------
+\newcounter{dinhly}[section]
+\newcounter{vidu}[section]
+\newcounter{cauhoi}[section]
+\newcounter{chuy}[section]
+
+%% ---------- 10. Hộp Định lý / Công thức ----------
+\newtcolorbox{hopdinhly}[1][Định lý]{
+  enhanced, breakable,
+  colback=tealbg, colframe=teal,
+  coltitle=white, colbacktitle=teal,
+  boxrule=0.8pt, arc=2mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\refstepcounter{dinhly}\textbf{#1 \thedinhly}}
+}
+
+%% ---------- 11. Hộp Ví dụ ----------
+\newtcolorbox{hopvidu}[1][]{
+  enhanced, breakable,
+  colback=softgray, colframe=navy,
+  coltitle=white, colbacktitle=navy,
+  boxrule=0.8pt, arc=1.5mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\refstepcounter{vidu}\textbf{Ví dụ \thevidu} #1}
+}
+
+%% ---------- 12. Hộp Chú ý / Cảnh báo sai lầm ----------
+\newtcolorbox{hopchuy}[1][Chú ý]{
+  enhanced, breakable,
+  colback=amberbg, colframe=amber,
+  boxrule=0.8pt, arc=1.5mm, top=1.5mm, bottom=1.5mm,
+  fonttitle=\bfseries\color{amber},
+  title={\refstepcounter{chuy}\textbf{#1}}
+}
+
+%% ---------- 13. Hộp Phương pháp giải ----------
+\newtcolorbox{hopphuongphap}[1][Phương pháp giải]{
+  enhanced, breakable,
+  colback=white, colframe=navylight,
+  boxrule=1pt, arc=1mm, top=1.5mm, bottom=1.5mm,
+  fonttitle=\bfseries\color{navy},
+  title={\textbf{#1}}
+}
+
+%% ---------- 14. Môi trường lời giải ----------
+\newenvironment{loigiai}{%
+  \par\vspace{1mm}\noindent\textbf{\color{navy}Lời giải.}\quad
+}{%
+  \hfill$\blacksquare$\par\vspace{1mm}
+}
+
+%% ---------- 15. Câu hỏi trắc nghiệm tự đánh số ----------
+\newcommand{\cauhoi}{\refstepcounter{cauhoi}\noindent\textbf{Câu \thecauhoi.}\ }
+
+\endinput

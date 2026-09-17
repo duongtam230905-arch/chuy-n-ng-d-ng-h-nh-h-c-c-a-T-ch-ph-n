@@ -1,115 +1,94 @@
-# 📋 KẾ HOẠCH TỔNG THỂ VÀ MA TRẬN NỘI DUNG
-**Dự án: Chuyên đề Ứng dụng hình học của Tích phân (GDPT 2018)**
+# 📋 KẾ HOẠCH TỔNG THỂ VÀ CHUỖI TƯ DUY NỘI DUNG
+**Dự án: Chuyên đề Ứng dụng hình học của Tích phân (Chương trình Toán 12 mới)**
 
-> **Định mức dự kiến:** ~50 trang A4 | **Cấp độ:** Lớp 12 | **Phân khúc:** Cơ bản đến Vận dụng cao
-
----
-
-## PHẦN I: THỐNG KÊ VÀ PHÂN BỔ THỜI LƯỢNG BIÊN SOẠN
-
-| Mã học phần | Phân hệ nội dung | Độ dài dự kiến | Tiến độ |
-|:---|:---|:---:|:---:|
-| **MOD-00** | Bìa sách, Mục lục tự động, Lời mở đầu | 4 trang | 100% |
-| **MOD-01** | Bài 1: Tính diện tích hình phẳng | 15 trang | 100% |
-| **MOD-02** | Bài 2: Tính thể tích vật thể và khối tròn xoay | 16 trang | 100% |
-| **MOD-03** | Bài 3: Kiểm tra Đánh giá (Định dạng mới) | 12 trang | 100% |
-| **MOD-04** | Phụ lục & Bảng tra cứu công thức nhanh | 3 trang | 100% |
-| **TỔNG** | **Bản thảo hoàn chỉnh** | **~50 trang** | **100%** |
+> **Định mức dự kiến:** Khoảng 30 trang A4 | **Cấp độ:** Lớp 12 | **Định hướng:** Khơi gợi tư duy, tự học ở nhà
 
 ---
 
-## PHẦN II: KHUNG XƯƠNG NỘI DUNG CHI TIẾT (SYLLABUS)
+## PHẦN I: TIẾN ĐỘ VÀ PHÂN BỔ NỘI DUNG
 
-### 🟢 Bài 1: Diện tích hình phẳng (Dự kiến 15 trang)
-**Mục tiêu:** Học sinh nắm vững ý nghĩa hình học của tích phân, thành thạo kỹ năng xét dấu để phá giá trị tuyệt đối và ứng dụng tính diện tích các mô hình phẳng.
+| Mã học phần | Tên bài học | Ý tưởng sư phạm cốt lõi | Độ dài dự kiến | Tiến độ |
+|:---|:---|:---|:---:|:---:|
+| **MOD-00** | Lời mở đầu & Hướng dẫn tự học | Hình thành thói quen "suy nghĩ trước khi xem đáp án", hướng dẫn cách dùng các hộp gợi ý để tự gỡ rối. | 2 trang | 100% |
+| **MOD-01** | Bài 1: Tính diện tích hình phẳng | Từ việc xấp xỉ diện tích đến hiểu bản chất của dấu giá trị tuyệt đối và ứng dụng thực tế. | 14 trang | Đang cập nhật |
+| **MOD-02** | Bài 2: Tính thể tích vật thể và khối tròn xoay | Đi từ mặt cắt của một vật thể để hiểu sự xuất hiện của số Pi, cách nhận diện và xử lý các bẫy hình học không gian. | 14 trang | Đang cập nhật |
+| **TỔNG** | **Bản thảo hoàn chỉnh** | **Tập trung sâu vào việc phân tích và hình thành ý tưởng giải toán** | **Khoảng 30 trang** | **...%** |
 
-*   [x] **1. Nền tảng Lý thuyết & Định lý cơ bản**
-    *   Định lý và công thức diện tích hình phẳng giới hạn bởi 1 đường cong $y=f(x)$, trục $Ox$ và $x=a, x=b$.
-    *   Định lý và công thức diện tích hình phẳng giới hạn bởi 2 đường cong $y=f(x), y=g(x)$.
-    *   *Kỹ thuật trình bày:* Xây dựng hộp `tcolorbox` làm nổi bật công thức, đi kèm 2 hình vẽ `TikZ` minh họa tổng quát.
-
-*   [x] **2. Dạng 1: Tính diện tích khi giả thiết cho sẵn hàm số và cận**
-    *   Phương pháp phá dấu trị tuyệt đối bằng cách giải phương trình $f(x)=0$ hoặc $f(x)=g(x)$ trên đoạn $[a; b]$.
-    *   Bài tập chia thành các nhóm hàm: Đa thức (bậc 2, bậc 3), Phân thức, Hàm lượng giác, Hàm mũ/logarit.
-
-*   [x] **3. Dạng 2: Tính diện tích khi thiếu cận (Giới hạn bởi các đường cong khép kín)**
-    *   Kỹ năng thiết lập phương trình hoành độ giao điểm để tìm cận.
-    *   Xử lý trường hợp 2 đường cong cắt nhau tạo thành 2 miền diện tích riêng biệt (phải chẻ tích phân).
-
-*   [x] **4. Dạng 3: Kỹ năng đọc hiểu đồ thị và tư duy hình học**
-    *   Bài toán cho sẵn hình vẽ, ẩn đi một phần hoặc toàn bộ biểu thức giải tích.
-    *   Sử dụng hình vẽ để xác định tính trên/dưới của các đường cong $\Rightarrow$ Bỏ dấu giá trị tuyệt đối mà không cần giải phương trình.
-    *   *Kỹ thuật trình bày:* Mã hóa `pgfplots` để tạo các miền gạch sọc (pattern) phức tạp.
-
-*   [x] **5. Dạng 4: Mô hình hóa Toán học (Bài toán thực tiễn)**
-    *   Gắn hệ trục tọa độ $Oxy$ vào các công trình kiến trúc (cổng hình Parabol, cửa sổ Elip, mặt cắt đường hầm).
-    *   Tính toán chi phí nguyên vật liệu (lát gạch, sơn tường, làm kính) dựa trên diện tích tích phân.
+*(Ghi chú: Đã lược bỏ các phần bài tập kiểm tra độc lập để tài liệu được tinh gọn; phần bài tập đánh giá năng lực sẽ được tích hợp trực tiếp vào cuối Bài 1 và Bài 2).*
 
 ---
 
-### 🔵 Bài 2: Thể tích vật thể và Khối tròn xoay (Dự kiến 16 trang)
-**Mục tiêu:** Phát triển năng lực tưởng tượng không gian. Phân định rạch ròi khái niệm "Thể tích vật thể biết diện tích thiết diện" và "Thể tích khối tròn xoay".
+## PHẦN II: KHUNG NỘI DUNG CHI TIẾT
 
-*   [x] **1. Nền tảng Lý thuyết & Định lý cơ bản**
-    *   Định lý tính thể tích vật thể $V = \int_a^b S(x) dx$ (Nhấn mạnh: KHÔNG có $\pi$, KHÔNG có bình phương).
-    *   Công thức thể tích khối tròn xoay quanh trục $Ox$: $V = \pi \int_a^b f^2(x) dx$.
-    *   *Kỹ thuật trình bày:* Sử dụng thư viện đồ họa 3D trong TikZ để vẽ phác thảo thiết diện cắt ngang và khối tròn xoay.
+Chu trình tư duy bắt buộc cho mọi bài toán trong tài liệu này sẽ đi theo 4 bước:
+`[Hoạt động khám phá] $\rightarrow$ [Gợi mở vấn đề] $\rightarrow$ [Phân tích ý tưởng] $\rightarrow$ [Lời giải chi tiết]`
 
-*   [x] **2. Dạng 1: Tính thể tích vật thể có diện tích mặt cắt ngang $S(x)$**
-    *   Thiết lập hàm diện tích $S(x)$ khi thiết diện là các hình cơ bản: Hình vuông, Tam giác đều, Nửa hình tròn phụ thuộc vào biến $x$.
-    *   Rèn luyện kỹ năng tính toán tích phân nguyên hàm cơ bản.
+### 🟢 Bài 1: Diện tích hình phẳng (Dự kiến 14 trang)
+**Mục tiêu:** Xóa bỏ thói quen học vẹt công thức. Giúp học sinh tự hiểu nguồn gốc của tích phân thông qua bài toán chia nhỏ diện tích, tự nhận ra lý do bắt buộc phải có dấu giá trị tuyệt đối.
 
-*   [x] **3. Dạng 2: Khối tròn xoay giới hạn bởi 1 đường cong và trục $Ox$**
-    *   Áp dụng trực tiếp công thức. Các bài tập rèn kỹ năng khai triển hằng đẳng thức hoặc sử dụng tích phân từng phần/đổi biến số sau khi bình phương hàm $f(x)$.
+*   [ ] **1. Hoạt động khám phá (Thay cho việc ép buộc học sinh nhớ Định lý)**
+    *   *Tình huống:* Đưa ra hình ảnh một mảnh đất có đường bao quanh cong vẹo. Câu hỏi đặt ra: "Làm sao để tính diện tích mảnh đất này nếu ta chỉ mới biết công thức tính diện tích hình chữ nhật?"
+    *   *Gợi mở:* Tưởng tượng việc chia mảnh đất thành các dải rất nhỏ để tính xấp xỉ bằng các hình chữ nhật.
+    *   *Chốt kiến thức:* Mối liên hệ giữa tổng diện tích các hình chữ nhật nhỏ đó và biểu thức tích phân $\int_a^b f(x) dx$.
 
-*   [x] **4. Dạng 3: Khối tròn xoay tạo bởi hình phẳng giới hạn bởi 2 đường cong**
-    *   Công thức vòng đệm (Washer method): $V = \pi \int_a^b |f^2(x) - g^2(x)| dx$.
-    *   Cảnh báo sai lầm kinh điển của học sinh: Tránh nhầm lẫn giữa $\pi \int |f^2 - g^2|$ và $\pi \int (f - g)^2$.
+*   [ ] **2. Vấn đề 1: Trở ngại từ "Giá trị âm"**
+    *   *Tình huống:* Học sinh bấm máy tính $\int_0^{2\pi} \sin x dx = 0$. Tại sao diện tích lại bằng 0?
+    *   *Ý tưởng:* Đồ thị có những phần chìm dưới trục hoành. Diện tích là một đại lượng không âm, nhưng tích phân thì có thể mang dấu âm. Từ đó, học sinh thấy được sự cần thiết của dấu giá trị tuyệt đối và học cách xét dấu.
 
-*   [x] **5. Dạng 4: Ứng dụng thực tiễn - Tối ưu hóa trong thiết kế**
-    *   Tính thể tích chất lỏng trong bồn chứa nằm ngang/thẳng đứng.
-    *   Tính dung tích của các vật dụng sinh hoạt (cốc thủy tinh, chao đèn, vòm nón, thùng rượu vang).
+*   [ ] **3. Vấn đề 2: Khi biên giới bị ẩn**
+    *   *Tình huống:* Bài toán yêu cầu tính diện tích giữa hai đường cong nhưng không cho sẵn giới hạn $x=a$ và $x=b$.
+    *   *Ý tưởng:* Hình phẳng này bị giới hạn bởi chính các điểm cắt nhau của hai đường cong. Hướng dẫn học sinh cách lập phương trình hoành độ giao điểm để chốt lại giới hạn.
 
----
+*   [ ] **4. Vấn đề 3: Đọc hiểu ngôn ngữ đồ thị**
+    *   *Tình huống:* Đề bài chỉ cho hình vẽ đồ thị mà giấu đi biểu thức hàm số.
+    *   *Ý tưởng:* Không có biểu thức nên không thể giải phương trình. Học sinh cần nhìn hình để thấy đường nào nằm trên, đường nào nằm dưới, từ đó bỏ đi dấu giá trị tuyệt đối một cách tự nhiên.
 
-### 🟣 Bài 3: Kiểm tra, Đánh giá năng lực (Dự kiến 12 trang)
-**Mục tiêu:** Tổng hợp kiến thức, rèn luyện áp lực thời gian và làm quen với cấu trúc đề thi tốt nghiệp THPT từ năm 2025 theo chuẩn Công văn 7991/BGDĐT-GDTrH.
+*   [ ] **5. Vấn đề 4: Bài toán mô hình hóa thực tiễn**
+    *   *Tình huống:* Tính toán chi phí sơn một chiếc cổng Parabol hoặc lắp kính cho cửa sổ hình Elip.
+    *   *Ý tưởng:* Dạy học sinh cách chọn hệ trục tọa độ sao cho hàm số trở nên gọn gàng và dễ tính toán nhất trước khi bắt tay vào giải.
 
-*   [x] **1. Sơ đồ tư duy (Mindmap Tổng kết)**
-    *   Vẽ sơ đồ khối bằng `TikZ` tóm tắt toàn bộ công thức cốt lõi.
-
-*   [x] **2. Phần I: Cấu trúc trắc nghiệm nhiều phương án lựa chọn**
-    *   Số lượng: 15 - 20 câu. Tập trung kiểm tra mức độ Biết - Hiểu. Yêu cầu phản xạ nhanh với công thức và kỹ năng bấm máy tính cầm tay.
-    *   *Trình bày:* Bố cục 2 cột gọn gàng.
-
-*   [x] **3. Phần II: Cấu trúc trắc nghiệm Đúng/Sai**
-    *   Số lượng: 3 - 4 cụm bài toán (mỗi cụm 4 ý a, b, c, d).
-    *   Tập trung vào các câu hỏi phân tích đồ thị phức tạp. Yêu cầu học sinh phải lập luận tính đúng sai của các biểu thức tích phân được gài bẫy tinh vi.
-
-*   [x] **4. Phần III: Cấu trúc trắc nghiệm Trả lời ngắn**
-    *   Số lượng: 4 - 6 câu.
-    *   Toàn bộ là các bài toán mô hình hóa thực tế hoặc tính toán phức tạp đòi hỏi ra đáp án cuối cùng (làm tròn số theo quy định). Loại bỏ hoàn toàn tư duy thử đáp án.
+*   [ ] **6. Đánh giá năng lực (Tích hợp cuối Bài 1)**
+    *   Trắc nghiệm nhiều lựa chọn: Tập trung vào kỹ năng phản xạ công thức và tính toán nhanh.
+    *   Trắc nghiệm Đúng/Sai: Yêu cầu phân tích đồ thị, nhận diện các bẫy về dấu.
+    *   Trắc nghiệm trả lời ngắn: Chuyên xử lý các bài toán thực tế, yêu cầu ra kết quả cuối cùng và làm tròn số.
 
 ---
 
-### ⚪ Phụ lục: Bảng tra cứu công thức nhanh (Dự kiến 3 trang)
-**Mục tiêu:** Tổng hợp toàn bộ công thức cốt lõi của cả Bài 1 và Bài 2 thành bảng tra cứu nhanh, dùng để ôn tập trước kỳ thi.
+### 🔵 Bài 2: Thể tích vật thể và khối tròn xoay (Dự kiến 14 trang)
+**Mục tiêu:** Phát triển trí tưởng tượng không gian. Học sinh phải tự phân biệt được hai bản chất hoàn toàn khác nhau: tính thể tích qua diện tích mặt cắt và tính thể tích của một khối tròn xoay.
 
-*   [x] Bảng công thức Diện tích hình phẳng (các trường hợp).
-*   [x] Bảng công thức Thể tích vật thể và khối tròn xoay (các trường hợp).
-*   [x] Bảng quy đổi đơn vị và các sai lầm cần tránh (tổng hợp từ các hộp Chú ý xuyên suốt tài liệu).
+*   [ ] **1. Hoạt động khám phá**
+    *   *Câu chuyện cắt bánh mì:* Thể tích của cả ổ bánh mì chính là tổng thể tích của các lát cắt siêu mỏng ghép lại $\rightarrow V = \int_a^b S(x) dx$.
+    *   *Chiếc bàn xoay gốm:* Quay một đường cong quanh trục sẽ tạo ra hình gì? Tại sao trong công thức lại xuất hiện số Pi và bình phương? $\rightarrow V = \pi \int_a^b f^2(x) dx$.
+
+*   [ ] **2. Vấn đề 1: Thể tích vật thể khi biết mặt cắt ngang**
+    *   *Tình huống:* Tính thể tích khi biết mặt đáy là hình tròn, mặt cắt thẳng đứng là một tam giác đều.
+    *   *Ý tưởng:* Cần biểu diễn độ dài cạnh tam giác theo tọa độ $x$, từ đó lập hàm diện tích $S(x)$. Nhấn mạnh cho học sinh hiểu: Dạng toán này hoàn toàn không có số Pi.
+
+*   [ ] **3. Vấn đề 2: Tạo hình khối tròn xoay cơ bản**
+    *   *Tình huống:* Mô phỏng và tính thể tích của một bình cắm hoa hay một chiếc ly thủy tinh.
+    *   *Ý tưởng:* Kỹ năng bình phương hàm số và tính tích phân nguyên hàm.
+
+*   [ ] **4. Vấn đề 3: Sai lầm khi tính thể tích khối có phần lõi rỗng**
+    *   *Tình huống:* Một hình phẳng bị kẹp giữa hai đường cong, khi xoay quanh trục sẽ tạo ra một vật thể bị rỗng ở phần lõi (giống như lõi cuộn giấy vệ sinh).
+    *   *Ý tưởng:* Phân tích một sai lầm rất phổ biến của học sinh: hiểu sai bản chất giữa việc lấy bình phương của từng hàm rồi trừ đi nhau, so với việc lấy hai hàm trừ nhau rồi mới bình phương.
+
+*   [ ] **5. Vấn đề 4: Tối ưu hóa dung tích trong thực tế**
+    *   *Tình huống:* Tính lượng nước tối đa có thể chứa trong một chiếc thùng phuy cong hoặc thể tích của các bồn chứa công nghiệp.
+
+*   [ ] **6. Đánh giá năng lực (Tích hợp cuối Bài 2)**
+    *   Hệ thống 3 định dạng bài tập trắc nghiệm tương tự như Bài 1.
 
 ---
 
-## PHẦN III: TIÊU CHUẨN KỸ THUẬT VÀ NGHIỆP VỤ $\LaTeX$ (Quality Assurance)
+## PHẦN III: TIÊU CHUẨN TRÌNH BÀY VÀ KỸ THUẬT LaTeX
 
-Để văn bản đạt chất lượng xuất bản thương mại (Publishing-grade), người biên soạn phải cam kết tuân thủ các quy tắc sau:
-1.  **Zero Warnings:** Triệt tiêu hoàn toàn các lỗi `Overfull \hbox` và `Underfull \hbox` bằng cách kiểm soát ngắt dòng và độ rộng của các phương trình Toán học.
-2.  **Đồ họa thuần túy (Native Graphics):** 100% hình học, đồ thị hàm số và mô hình 3D phải được render trực tiếp bằng mã `TikZ`/`pgfplots`. Tuyệt đối **không** dùng lệnh `\includegraphics` để chèn ảnh bitmap (`.png`, `.jpg`) cắt từ các phần mềm ngoại lai.
-3.  **Tự động hóa số liệu:** Sử dụng bộ đếm (counters) tự động cho toàn bộ hệ thống Câu hỏi, Ví dụ, Định lý. Không gõ chay số thứ tự để dễ dàng xáo trộn hoặc bổ sung ngân hàng đề sau này.
+Để tài liệu thể hiện đúng triết lý sư phạm mới, cấu hình LaTeX sẽ được bổ sung thêm các môi trường hộp hội thoại tạo điểm nhấn:
+1.  **Hộp khám phá:** Dùng cho phần mở đầu bài học, sử dụng nền màu sáng, bắt mắt để kích thích sự tò mò.
+2.  **Hộp gợi mở:** Sử dụng đường viền nét đứt, đóng vai trò như những lời gợi ý từng bước để học sinh tự gỡ bí khi gặp bài khó.
+3.  **Hộp ý tưởng:** Có biểu tượng bóng đèn, được đặt ngay trước lời giải chi tiết để phân tích hướng đi.
 
----
-
-## PHẦN IV: GHI CHÚ KỸ THUẬT BIÊN DỊCH
-
-Dự án biên dịch bằng **PDFLaTeX** với gói `vietnam` (bộ `vntex`) + `mathptmx`. Gói `vntex` cần được cài đặt sẵn trong hệ thống TeX (mặc định có trên Overleaf). Xem chi tiết tại [`README.md`](README.md).
+*Cam kết về chất lượng bản in:*
+*   **Biên dịch trơn tru:** Căn chỉnh tỉ mỉ để không xảy ra hiện tượng tràn lề (chữ chạy ra ngoài khung) hay khoảng cách các chữ quá thưa.
+*   **Đồ họa không gian trực tiếp:** 100% hình vẽ hình học, đồ thị và mặt cắt không gian được vẽ trực tiếp bằng các đoạn mã lệnh toán học, tuyệt đối không chèn ảnh chụp cắt ghép từ bên ngoài, đảm bảo nét vẽ sắc sảo khi in ấn.
+*   **Tự động hóa đánh số:** Đánh số thứ tự hoàn toàn tự động cho mọi câu hỏi, bài tập và định lý, giúp tài liệu luôn liền mạch dù có thêm bớt nội dung.

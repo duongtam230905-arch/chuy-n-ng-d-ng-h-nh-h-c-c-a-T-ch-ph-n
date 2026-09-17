@@ -1,10 +1,10 @@
 # 📐 DỰ ÁN HỌC LIỆU CHUYÊN SÂU: ỨNG DỤNG HÌNH HỌC CỦA TÍCH PHÂN
-**Phương pháp Sư phạm: Kiến tạo & Tư duy Heuristic**
+**Phương pháp Sư phạm: Kiến tạo & Tư duy**
 **Chương trình Giáo dục Phổ thông 2018 – Môn Toán 12**
 
 **Đơn vị/Cá nhân biên soạn:** Thầy Tâm dạy Toán
 **Liên hệ (Zalo):** 0837715745
-**Nền tảng công nghệ:** $\LaTeX$ (Định dạng chuẩn in ấn quốc tế)
+**Nền tảng công nghệ:** $\LaTeX$
 **Mục đích sử dụng:** Tài liệu tự học, tự khám phá dành cho học sinh.
 **Phiên bản:** 2.0.0 (Tinh gọn & Chuyên sâu Ý tưởng)
 

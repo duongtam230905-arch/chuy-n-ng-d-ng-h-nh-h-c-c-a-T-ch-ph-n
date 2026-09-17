@@ -9,7 +9,7 @@
 
 | Mã học phần | Tên bài học | Ý tưởng sư phạm cốt lõi | Độ dài dự kiến | Tiến độ |
 |:---|:---|:---|:---:|:---:|
-| **MOD-00** | Lời mở đầu & Hướng dẫn tự học | Hình thành thói quen "suy nghĩ trước khi xem đáp án", hướng dẫn cách dùng các hộp gợi ý để tự gỡ rối. | 2 trang | 100% |
+| **MOD-00** | Lời mở đầu & Hướng dẫn tự học | Hình thành thói quen "suy nghĩ trước khi xem đáp án", hướng dẫn cách dùng các hộp gợi ý để tự gỡ rối. | 2 trang | Đang cập nhật |
 | **MOD-01** | Bài 1: Tính diện tích hình phẳng | Từ việc xấp xỉ diện tích đến hiểu bản chất của dấu giá trị tuyệt đối và ứng dụng thực tế. | 14 trang | Đang cập nhật |
 | **MOD-02** | Bài 2: Tính thể tích vật thể và khối tròn xoay | Đi từ mặt cắt của một vật thể để hiểu sự xuất hiện của số Pi, cách nhận diện và xử lý các bẫy hình học không gian. | 14 trang | Đang cập nhật |
 | **TỔNG** | **Bản thảo hoàn chỉnh** | **Tập trung sâu vào việc phân tích và hình thành ý tưởng giải toán** | **Khoảng 30 trang** | **...%** |

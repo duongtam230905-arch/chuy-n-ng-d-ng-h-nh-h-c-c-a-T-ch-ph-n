@@ -26,24 +26,24 @@ Chu trình tư duy bắt buộc cho mọi bài toán trong tài liệu này sẽ
 ### 🟢 Bài 1: Diện tích hình phẳng (Dự kiến 14 trang)
 **Mục tiêu:** Xóa bỏ thói quen học vẹt công thức. Giúp học sinh tự hiểu nguồn gốc của tích phân thông qua bài toán chia nhỏ diện tích, tự nhận ra lý do bắt buộc phải có dấu giá trị tuyệt đối.
 
-*   [ ] **1. Hoạt động khám phá (Thay cho việc ép buộc học sinh nhớ Định lý)**
+*   [ ] **1. Hoạt động khám phá: Tích phân và diện tích hình phẳng**
     *   *Tình huống:* Đưa ra hình ảnh một mảnh đất có đường bao quanh cong vẹo. Câu hỏi đặt ra: "Làm sao để tính diện tích mảnh đất này nếu ta chỉ mới biết công thức tính diện tích hình chữ nhật?"
     *   *Gợi mở:* Tưởng tượng việc chia mảnh đất thành các dải rất nhỏ để tính xấp xỉ bằng các hình chữ nhật.
     *   *Chốt kiến thức:* Mối liên hệ giữa tổng diện tích các hình chữ nhật nhỏ đó và biểu thức tích phân $\int_a^b f(x) dx$.
 
-*   [ ] **2. Vấn đề 1: Trở ngại từ "Giá trị âm"**
+*   [ ] **2.Vấn đề 1: Diện tích hình phẳng nằm phía dưới trục hoành**
     *   *Tình huống:* Học sinh bấm máy tính $\int_0^{2\pi} \sin x dx = 0$. Tại sao diện tích lại bằng 0?
     *   *Ý tưởng:* Đồ thị có những phần chìm dưới trục hoành. Diện tích là một đại lượng không âm, nhưng tích phân thì có thể mang dấu âm. Từ đó, học sinh thấy được sự cần thiết của dấu giá trị tuyệt đối và học cách xét dấu.
 
-*   [ ] **3. Vấn đề 2: Khi biên giới bị ẩn**
+*   [ ] **3. Vấn đề 2: Tính diện tích hình phẳng khi chưa biết cận**
     *   *Tình huống:* Bài toán yêu cầu tính diện tích giữa hai đường cong nhưng không cho sẵn giới hạn $x=a$ và $x=b$.
     *   *Ý tưởng:* Hình phẳng này bị giới hạn bởi chính các điểm cắt nhau của hai đường cong. Hướng dẫn học sinh cách lập phương trình hoành độ giao điểm để chốt lại giới hạn.
 
-*   [ ] **4. Vấn đề 3: Đọc hiểu ngôn ngữ đồ thị**
+*   [ ] **4. Vấn đề 3: Tính diện tích hình phẳng khi đề bài chỉ cho đồ th**
     *   *Tình huống:* Đề bài chỉ cho hình vẽ đồ thị mà giấu đi biểu thức hàm số.
     *   *Ý tưởng:* Không có biểu thức nên không thể giải phương trình. Học sinh cần nhìn hình để thấy đường nào nằm trên, đường nào nằm dưới, từ đó bỏ đi dấu giá trị tuyệt đối một cách tự nhiên.
 
-*   [ ] **5. Vấn đề 4: Bài toán mô hình hóa thực tiễn**
+*   [ ] **5. Vấn đề 4: Mô hình hóa toán học – Bài toán thực tiễn**
     *   *Tình huống:* Tính toán chi phí sơn một chiếc cổng Parabol hoặc lắp kính cho cửa sổ hình Elip.
     *   *Ý tưởng:* Dạy học sinh cách chọn hệ trục tọa độ sao cho hàm số trở nên gọn gàng và dễ tính toán nhất trước khi bắt tay vào giải.
 

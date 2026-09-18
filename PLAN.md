@@ -9,10 +9,10 @@
 
 | Mã học phần | Tên bài học | Ý tưởng sư phạm cốt lõi | Độ dài dự kiến | Tiến độ |
 |:---|:---|:---|:---:|:---:|
-| **MOD-00** | Lời mở đầu & Hướng dẫn tự học | Hình thành thói quen "suy nghĩ trước khi xem đáp án", hướng dẫn cách dùng các hộp gợi ý để tự gỡ rối. | 2 trang | Đang cập nhật |
-| **MOD-01** | Bài 1: Tính diện tích hình phẳng | Từ việc xấp xỉ diện tích đến hiểu bản chất của dấu giá trị tuyệt đối và ứng dụng thực tế. | 14 trang | Đang cập nhật |
+| **MOD-00** | Lời mở đầu & Hướng dẫn tự học | Hình thành thói quen "suy nghĩ trước khi xem đáp án", hướng dẫn cách dùng các hộp gợi ý để tự gỡ rối. | 2 trang | 100%|
+| **MOD-01** | Bài 1: Tính diện tích hình phẳng | Từ việc xấp xỉ diện tích đến hiểu bản chất của dấu giá trị tuyệt đối và ứng dụng thực tế. | 20 trang | 80% |
 | **MOD-02** | Bài 2: Tính thể tích vật thể và khối tròn xoay | Đi từ mặt cắt của một vật thể để hiểu sự xuất hiện của số Pi, cách nhận diện và xử lý các bẫy hình học không gian. | 14 trang | Đang cập nhật |
-| **TỔNG** | **Bản thảo hoàn chỉnh** | **Tập trung sâu vào việc phân tích và hình thành ý tưởng giải toán** | **Khoảng 30 trang** | **...%** |
+| **TỔNG** | **Bản thảo hoàn chỉnh** | **Tập trung sâu vào việc phân tích và hình thành ý tưởng giải toán** | **Khoảng 45 trang** | **...%** |
 
 *(Ghi chú: Đã lược bỏ các phần bài tập kiểm tra độc lập để tài liệu được tinh gọn; phần bài tập đánh giá năng lực sẽ được tích hợp trực tiếp vào cuối Bài 1 và Bài 2).*
 
@@ -26,28 +26,28 @@ Chu trình tư duy bắt buộc cho mọi bài toán trong tài liệu này sẽ
 ### 🟢 Bài 1: Diện tích hình phẳng (Dự kiến 14 trang)
 **Mục tiêu:** Xóa bỏ thói quen học vẹt công thức. Giúp học sinh tự hiểu nguồn gốc của tích phân thông qua bài toán chia nhỏ diện tích, tự nhận ra lý do bắt buộc phải có dấu giá trị tuyệt đối.
 
-*   [ ] **1. Hoạt động khám phá: Tích phân và diện tích hình phẳng**
+*   [x] **1. Hoạt động khám phá: Tích phân và diện tích hình phẳng**
     *   *Tình huống:* Đưa ra hình ảnh một mảnh đất có đường bao quanh cong vẹo. Câu hỏi đặt ra: "Làm sao để tính diện tích mảnh đất này nếu ta chỉ mới biết công thức tính diện tích hình chữ nhật?"
     *   *Gợi mở:* Tưởng tượng việc chia mảnh đất thành các dải rất nhỏ để tính xấp xỉ bằng các hình chữ nhật.
     *   *Chốt kiến thức:* Mối liên hệ giữa tổng diện tích các hình chữ nhật nhỏ đó và biểu thức tích phân $\int_a^b f(x) dx$.
 
-*   [ ] **2.Vấn đề 1: Diện tích hình phẳng nằm phía dưới trục hoành**
+*   [x] **2.Vấn đề 1: Diện tích hình phẳng nằm phía dưới trục hoành**
     *   *Tình huống:* Học sinh bấm máy tính $\int_0^{2\pi} \sin x dx = 0$. Tại sao diện tích lại bằng 0?
     *   *Ý tưởng:* Đồ thị có những phần chìm dưới trục hoành. Diện tích là một đại lượng không âm, nhưng tích phân thì có thể mang dấu âm. Từ đó, học sinh thấy được sự cần thiết của dấu giá trị tuyệt đối và học cách xét dấu.
 
-*   [ ] **3. Vấn đề 2: Tính diện tích hình phẳng khi chưa biết cận**
+*   [x] **3. Vấn đề 2: Tính diện tích hình phẳng khi chưa biết cận**
     *   *Tình huống:* Bài toán yêu cầu tính diện tích giữa hai đường cong nhưng không cho sẵn giới hạn $x=a$ và $x=b$.
     *   *Ý tưởng:* Hình phẳng này bị giới hạn bởi chính các điểm cắt nhau của hai đường cong. Hướng dẫn học sinh cách lập phương trình hoành độ giao điểm để chốt lại giới hạn.
 
-*   [ ] **4. Vấn đề 3: Tính diện tích hình phẳng khi đề bài chỉ cho đồ th**
+*   [x] **4. Vấn đề 3: Tính diện tích hình phẳng khi đề bài chỉ cho đồ th**
     *   *Tình huống:* Đề bài chỉ cho hình vẽ đồ thị mà giấu đi biểu thức hàm số.
     *   *Ý tưởng:* Không có biểu thức nên không thể giải phương trình. Học sinh cần nhìn hình để thấy đường nào nằm trên, đường nào nằm dưới, từ đó bỏ đi dấu giá trị tuyệt đối một cách tự nhiên.
 
-*   [ ] **5. Vấn đề 4: Mô hình hóa toán học – Bài toán thực tiễn**
+*   [x] **5. Vấn đề 4: Mô hình hóa toán học – Bài toán thực tiễn**
     *   *Tình huống:* Tính toán chi phí sơn một chiếc cổng Parabol hoặc lắp kính cho cửa sổ hình Elip.
     *   *Ý tưởng:* Dạy học sinh cách chọn hệ trục tọa độ sao cho hàm số trở nên gọn gàng và dễ tính toán nhất trước khi bắt tay vào giải.
 
-*   [ ] **6. Đánh giá năng lực (Tích hợp cuối Bài 1)**
+*   [ ] **6. Bài tập vận dụng**
     *   Trắc nghiệm nhiều lựa chọn: Tập trung vào kỹ năng phản xạ công thức và tính toán nhanh.
     *   Trắc nghiệm Đúng/Sai: Yêu cầu phân tích đồ thị, nhận diện các bẫy về dấu.
     *   Trắc nghiệm trả lời ngắn: Chuyên xử lý các bài toán thực tế, yêu cầu ra kết quả cuối cùng và làm tròn số.

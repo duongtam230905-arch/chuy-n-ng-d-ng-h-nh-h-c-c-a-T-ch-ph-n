@@ -36,7 +36,8 @@ Chuyen-De-Tich-Phan-12/
 ├── chapters/               ← Thư mục chứa nội dung chính
 │   ├── 00-loi-noi-dau.tex  ← Lời tâm tình và hướng dẫn học sinh cách tự học hiệu quả
 │   ├── 01-dien-tich.tex    ← Bài 1: Hành trình khám phá diện tích hình phẳng
-│   └── 02-the-tich.tex     ← Bài 2: Hành trình khám phá thể tích vật thể và khối tròn xoay
+│   ├── 02-the-tich.tex     ← Bài 2: Hành trình khám phá thể tích vật thể và khối tròn xoay
+|   └── bia.tex             ←  bìa sách
 ```
 ## 3. Tiêu chuẩn trình bày và định dạng 
 Tài liệu được biên dịch bằng PDFLaTeX với hệ thống công cụ chuẩn mực:

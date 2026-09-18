@@ -1,1 +1,858 @@
+\section{Diện tích hình phẳng}
 
+\subsection{Hoạt động khám phá: Tích phân và diện tích hình phẳng}
+
+\begin{hopkhampha}[Tình huống mở đầu]
+Một người nông dân sở hữu một mảnh đất ven sông, có một cạnh là đường cong tự nhiên (bờ sông uốn lượn), ba cạnh còn lại thẳng. Ông chỉ biết công thức tính diện tích hình chữ nhật, hình thang, tam giác. Làm sao để tính được diện tích mảnh đất có cạnh cong như vậy?
+\end{hopkhampha}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[-Latex, thick] (-0.5,0) -- (9.5,0) node[below right]{$x$};
+  \draw[-Latex, thick] (0,-0.5) -- (0,4.3) node[above left]{$y$};
+  \draw[navy, very thick, name path=duongcong]
+     (0.6,0.8) .. controls (2,2.6) and (3,3.6) .. (4.5,3.3)
+                .. controls (6,3.0) and (7,1.6) .. (8.6,1.0);
+  \fill[cyan, opacity=0.3]
+     (0.6,0) -- (0.6,0.8)
+     .. controls (2,2.6) and (3,3.6) .. (4.5,3.3)
+     .. controls (6,3.0) and (7,1.6) .. (8.6,1.0)
+     -- (8.6,0) -- cycle;
+  \draw[dashed, navy] (0.6,0) node[below]{$a$} -- (0.6,0.8);
+  \draw[dashed, navy] (8.6,0) node[below]{$b$} -- (8.6,1.0);
+  \node[navy] at (8.9,1.4) {$y=f(x)$};
+  \node[cyan!70!black] at (4.5,1.6) {\small Mảnh đất};
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Phần đất tô màu chính là hình phẳng giới hạn bởi đường cong $y=f(x)$, trục hoành và hai đường thẳng đứng $x=a$, $x=b$. Đây không phải hình chữ nhật hay hình thang quen thuộc, nhưng ta hoàn toàn có thể liên hệ nó với một đại lượng đã học ở phần đầu chương trình Giải tích 12: tích phân xác định $\displaystyle\int_a^b f(x)\dx$. Hãy thử nhớ lại ý nghĩa hình học mà tích phân xác định biểu diễn khi $f(x)\ge0$ trên $[a;b]$ -- liệu diện tích mảnh đất có thể chính là giá trị của tích phân này không?
+\end{hopgoiy}
+
+\begin{hopdinhly}[Định lý]
+Cho hàm số $y=f(x)$ liên tục trên đoạn $[a;b]$. Diện tích $S$ của hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)$, trục hoành $Ox$ và hai đường thẳng $x=a$, $x=b$ được tính bởi công thức
+\[
+S = \int_a^b |f(x)| \dx.
+\]
+\end{hopdinhly}
+
+\begin{center}
+\begin{tikzpicture}[
+  scale=0.9, >=Latex,
+  declare function={
+    % Định nghĩa hàm số để đảm bảo nét vẽ và mảng tô màu khớp nhau tuyệt đối
+    f(\x) = 1.7 + 0.5*sin(\x*60) + 0.08*(\x-3)*(\x-3);
+  }
+]
+  % 1. Tô màu miền diện tích S (Khớp hoàn toàn với đường cong)
+  \fill[cyan, fill opacity=0.25] 
+    (1,0) -- plot[domain=1:5.5, samples=100] (\x, {f(\x)}) -- (5.5,0) -- cycle;
+
+  % 2. Trục tọa độ
+  \draw[->, thick] (-0.5,0) -- (6.5,0) node[below] {$x$};
+  \draw[->, thick] (0,-0.5) -- (0,3.8) node[left] {$y$};
+  \node[below left, font=\small] at (0,0) {$O$};
+
+  % 3. Các đường gióng biên x=a và x=b chạm đúng mặt đường cong
+  \draw[thick, dashed, navy] (1,0) -- (1, {f(1)});
+  \draw[thick, dashed, navy] (5.5,0) -- (5.5, {f(5.5)});
+
+  % 4. Đồ thị y = f(x) được kéo dài 2 đầu thật mượt
+  \draw[navy, very thick] plot[domain=0.5:6.2, samples=100] (\x, {f(\x)});
+  \node[navy, font=\small\bfseries] at (5.1, 2.5) {$y = f(x)$};
+
+  % 5. Nhãn tọa độ a, b và nhãn S (không khoanh tròn)
+  \node[below, font=\bfseries] at (1,0) {$a$};
+  \node[below, font=\bfseries] at (5.5,0) {$b$};
+  \node[text=navy, font=\large\bfseries] at (3.25, 1) {$S$};
+
+  % 6. Khối hệ (H) và Khung công thức (loại bỏ màu nền)
+  \node[right, font=\small] at (6.8, 2.1) {
+    $(H) \begin{cases} 
+    y = f(x) \\ 
+    y = 0 \\ 
+    x = a \\ 
+    x = b 
+    \end{cases}$
+  };
+
+  \node[right, draw=navy, thick, inner sep=6pt, rounded corners=6pt] at (6.8, -0.3) {
+    $\displaystyle S = \int_a^b |f(x)| \dx$
+  };
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\subsection{Mở rộng: Diện tích giữa hai đường cong}
+
+\begin{hopkhampha}[Tình huống]
+Nếu mảnh đất của người nông dân không giáp trục hoành, mà bị kẹp giữa \textbf{hai} đường cong -- một bờ sông phía trên, một con đường mòn phía dưới -- thì công thức diện tích ở trên có còn dùng trực tiếp được không?
+\end{hopkhampha}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+  % 1. Tô màu vùng diện tích kẹp giữa 2 đường cong (hình dáng to, đẹp)
+  \fill[cyan, opacity=0.25]
+     (2, 2.5) .. controls (4, 6) and (6, 6) .. (8, 3.5) % Đi xuôi theo đường f(x)
+     .. controls (6, 1.5) and (4, 0.5) .. (2, 2.5) -- cycle; % Đi ngược theo đường g(x)
+
+  % 2. Các trục tọa độ
+  \draw[-Latex, thick] (-0.5,0) -- (10.5,0) node[below right]{$x$};
+  \draw[-Latex, thick] (0,-0.5) -- (0,6.5) node[above left]{$y$};
+  \node[below left] at (0,0) {$O$};
+
+  % 3. Vẽ đường cong y = f(x) (phía trên miền cắt)
+  % Kỹ thuật nối tiếp tuyến mượt tại điểm cắt A(2, 2.5) và B(8, 3.5)
+  \draw[navy, very thick]
+     (0.5, 0) .. controls (0.8, 0.5) and (1.2, 1.1) .. (2, 2.5)
+              .. controls (4, 6) and (6, 6) .. (8, 3.5)
+              .. controls (8.8, 2.5) and (9.2, 2.0) .. (9.5, 1.5);
+  
+  % 4. Vẽ đường cong y = g(x) (phía dưới miền cắt)
+  \draw[teal, very thick]
+     (0.5, 4.5) .. controls (0.8, 4.0) and (1.2, 3.3) .. (2, 2.5)
+                .. controls (4, 0.5) and (6, 1.5) .. (8, 3.5)
+                .. controls (8.8, 4.3) and (9.2, 4.7) .. (9.5, 5.0);
+
+  % 5. Hai đường gióng nét đứt giới hạn x=a và x=b ngay tại giao điểm
+  \draw[dashed, thick, navy] (2,0) node[below, text=black, font=\bfseries]{$a$} -- (2,2.5);
+  \draw[dashed, thick, navy] (8,0) node[below, text=black, font=\bfseries]{$b$} -- (8,3.5);
+
+  % 6. Ký hiệu Diện tích mảnh đất (chữ in, không có fill nền trắng)
+  \node[text=navy, font=\small\bfseries] at (5, 3.25) {Diện tích mảnh đất};
+
+  % 7. Chú thích các hàm số ở hai đuôi đồ thị
+  \node[navy, right, font=\bfseries] at (9.5, 1.5) {$y=f(x)$};
+  \node[teal, right, font=\bfseries] at (9.5, 5.0) {$y=g(x)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Miền tô màu cyan trên hình chính là mảnh đất, nằm giữa hai đồ thị $y=f(x)$ và $y=g(x)$ trên đoạn $[a;b]$. So với trường hợp trước (giữa đồ thị và trục hoành, tức $g(x)=0$), độ ``dày'' của miền tại một hoành độ $x$ bất kỳ không còn là $f(x)$ mà là hiệu $f(x)-g(x)$. Từ nhận xét đó, hãy thử đoán công thức tổng quát cho diện tích của miền này.
+\end{hopgoiy}
+
+\begin{hopdinhly}[Định lý]
+Cho hai hàm số $y=f(x)$, $y=g(x)$ liên tục trên đoạn $[a;b]$. Diện tích $S$ của hình phẳng giới hạn bởi hai đồ thị $y=f(x)$, $y=g(x)$ và hai đường thẳng $x=a$, $x=b$ được tính bởi công thức
+\[
+S = \int_a^b \ababs{f(x)-g(x)} \dx.
+\]
+\end{hopdinhly}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+  % 1. Tô màu vùng diện tích kẹp giữa 2 đường cong
+  \fill[cyan, opacity=0.25]
+     (2, 2.5) .. controls (4, 6) and (6, 6) .. (8, 3.5) 
+     .. controls (6, 1.5) and (4, 0.5) .. (2, 2.5) -- cycle; 
+
+  % 2. Các trục tọa độ
+  \draw[-Latex, thick] (-0.5,0) -- (10.5,0) node[below ]{$x$};
+  \draw[-Latex, thick] (0,-0.5) -- (0,6.5) node[ left]{$y$};
+  \node[below left] at (0,0) {$O$};
+
+  % 3. Vẽ đường cong y = f_1(x) (phía trên)
+  \draw[navy, very thick]
+     (0.5, 0) .. controls (0.8, 0.5) and (1.2, 1.1) .. (2, 2.5)
+              .. controls (4, 6) and (6, 6) .. (8, 3.5)
+              .. controls (8.8, 2.5) and (9.2, 2.0) .. (9.5, 1.5) 
+              node[right, font=\bfseries] {$(C_1)$};
+  
+  % 4. Vẽ đường cong y = f_2(x) (phía dưới)
+  \draw[teal, very thick]
+     (0.5, 4.5) .. controls (0.8, 4.0) and (1.2, 3.3) .. (2, 2.5)
+                .. controls (4, 0.5) and (6, 1.5) .. (8, 3.5)
+                .. controls (8.8, 4.3) and (9.2, 4.7) .. (9.5, 5.0) 
+                node[right, font=\bfseries] {$(C_2)$};
+
+  % 5. Hai đường gióng nét đứt giới hạn x=a và x=b
+  \draw[dashed, thick, navy] (2,0) node[below, text=black, font=\bfseries]{$a$} -- (2,2.5);
+  \draw[dashed, thick, navy] (8,0) node[below, text=black, font=\bfseries]{$b$} -- (8,3.5);
+
+  % 6. Ký hiệu chữ S lớn ở chính giữa
+  \node[text=navy, font=\large\bfseries] at (5, 3.25) {$S$};
+
+  % 7. Khối hệ phương trình (H)
+  \node[right] at (11, 3.5) {
+    $(H) \begin{cases} 
+    (C_1): y = f(x) \\ 
+    (C_2): y = g(x) \\ 
+    x = a \\ 
+    x = b 
+    \end{cases}$
+  };
+  
+  % 8. Công thức tính diện tích (có đóng khung đồng bộ màu navy)
+  \node[right, draw=navy, thick, rounded corners=2pt, inner sep=10pt] at (11.5, -1.0) {
+    $\displaystyle S = \int_a^b |f(x) - g(x)| \dx$
+  };
+\end{tikzpicture}
+\end{center}
+
+\begin{hopchuy}[Bản chất của dấu giá trị tuyệt đối]
+Tích phân $\displaystyle\int_a^b f(x)\dx$ có thể mang giá trị âm nếu $f(x)<0$ trên $[a;b]$, nhưng \textbf{diện tích luôn không âm}. Đây chính là lý do công thức diện tích luôn xuất hiện dấu trị tuyệt đối -- và cũng là nguồn gốc của toàn bộ kỹ thuật xử lý trong các Vấn đề dưới đây.
+\end{hopchuy}
+
+\subsection{Vấn đề 1: Diện tích hình phẳng nằm phía dưới trục hoành}
+
+\begin{hopkhampha}[Tình huống]
+Một học sinh bấm máy tính cầm tay để tính $\displaystyle\int_0^{2\pi}\sin x\dx$ và nhận được kết quả bằng $0$. Em này kết luận: ``Vậy diện tích hình phẳng giới hạn bởi $y=\sin x$ và trục hoành trên $[0;2\pi]$ bằng $0$''. Kết luận đó có đúng không?
+\end{hopkhampha}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, declare function={f(\x)=sin(deg(\x));}]
+  \begin{axis}[
+      axis lines=middle, 
+      xlabel={$x$}, ylabel={$y$},
+      xmin=-0.6, xmax=7.4, 
+      ymin=-1.5, ymax=1.6,
+      xtick=\empty, ytick=\empty, 
+      width=10cm, height=6.5cm,
+      axis line style={-Latex, thick, color=black}, 
+      samples=100,
+      clip=false
+    ]
+    
+    % 1. Tô màu miền 1 (S1 - Cyan trên [0, pi])
+    \fill[cyan, fill opacity=0.3] 
+      plot[domain=0:pi, smooth] (\x, {f(\x)}) -- (pi,0) -- (0,0) -- cycle;
+      
+    % 2. Tô màu miền 2 (S2 - Amber trên [pi, 2*pi])
+    \fill[amber, fill opacity=0.3] 
+      plot[domain=pi:2*pi, smooth] (\x, {f(\x)}) -- (pi,0) -- cycle;
+
+    % 3. Đồ thị hàm số y = sin(x) nghiêng lượn theo đường cong
+    \addplot [domain=-0.3:7.2, navy, very thick] {f(x)} 
+      node[sloped, above, pos=0.92, font=\small] {$y=\sin x$};
+
+    % 4. Nhãn S1, S2 đặt ở tâm 2 miền tô màu
+    \node[text=navy, font=\bfseries\small] at (1.57, 0.45) {$S_1$};
+    \node[text=navy, font=\bfseries\small] at (4.71, -0.45) {$S_2$};
+
+    % 5. Các mốc tọa độ pi, 2pi và gốc O
+    \node[above right, font=\small, xshift=-2pt] at (pi,0) {$\pi$};
+    \node[below, font=\small, yshift=-2pt] at (2*pi,0) {$2\pi$};
+    \node[below right, font=\small] at (0,0) {$O$};
+
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Trên hình, miền $S_1$ nằm trên trục hoành nên tích phân mang giá trị dương, còn miền $S_2$ nằm dưới trục hoành nên tích phân mang giá trị âm. Khi tính chung trên cả đoạn $[0; 2\pi]$, giá trị dương và âm bù trừ lẫn nhau khiến tích phân bằng $0$. Tuy nhiên, diện tích thực tế của hình phải là tổng $S_1+S_2>0$. Để tính đúng diện tích mà không bị bù trừ giá trị, ta cần làm gì với hàm số dưới dấu tích phân?
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+Trên đoạn $[0;2\pi]$, $\sin x \ge 0$ khi $x \in [0;\pi]$ và $\sin x \le 0$ khi $x \in [\pi;2\pi]$. Vì tích phân trên phần đồ thị nằm dưới trục hoành mang giá trị âm, việc tính gộp một mạch từ $0$ đến $2\pi$ sẽ khiến kết quả bị triệt tiêu và dẫn đến sai lệch. Để tính chính xác diện tích, ta phải đưa biểu thức vào trong dấu giá trị tuyệt đối, sau đó xét dấu $f(x)$ để tách thành các khoảng tích phân nhỏ rồi mới cộng lại.
+\end{hopyduong}
+\newpage
+\begin{hopphuongphap}[Phương pháp giải chung -- Vấn đề 1]
+\begin{enumerate}[leftmargin=1cm]
+  \item Giải phương trình $f(x)=0$ (hoặc $f(x)=g(x)$) để tìm các nghiệm thuộc $(a;b)$.
+  \item Các nghiệm này chia $[a;b]$ thành các đoạn con mà trên mỗi đoạn, $f(x)$ (hoặc $f(x)-g(x)$) không đổi dấu.
+  \item Dùng một giá trị đại diện trong mỗi đoạn con để xét dấu, từ đó phá dấu trị tuyệt đối.
+  \item Tính từng tích phân thành phần rồi cộng lại.
+\end{enumerate}
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Hàm đa thức bậc hai)]
+Tính diện tích hình phẳng giới hạn bởi parabol $(P): y=x^2-4x+3$, trục hoành và hai đường thẳng $x=0$, $x=3$.
+\end{hopvidu}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, declare function={f(\x)=\x^2-4*\x+3;}]
+  \begin{axis}[
+      axis lines=middle, 
+      xlabel={$x$}, ylabel={$y$},
+      xmin=-0.6, xmax=4, 
+      ymin=-1.5, ymax=4,
+      xtick=\empty, ytick=\empty, 
+      width=9.5cm, height=7cm,
+      axis line style={-Latex, thick, color=black}, 
+      samples=100,
+      clip=false
+    ]
+    
+    % 1. Tô màu miền 1 (cyan trên [0;1])
+    \fill[cyan, fill opacity=0.3] 
+      plot[domain=0:1, smooth] (\x, {f(\x)}) -- (1,0) -- (0,0) -- cycle;
+      
+    % 2. Tô màu miền 2 (amber trên [1;3])
+    \fill[amber, fill opacity=0.3] 
+      plot[domain=1:3, smooth] (\x, {f(\x)}) -- (1,0) -- cycle;
+
+    % 3. Đường gióng nét đứt tại cận x=0 (y=3)
+    \draw[dashed, thick, black] (0,0) -- (0,3);
+
+    % 4. Đồ thị Parabol (P) với nhãn nghiêng dọc theo nét vẽ
+    \addplot [domain=-0.2:4, navy, very thick] {f(x)} 
+      node[sloped, above, pos=0.87, font=\small] {$y=x^2-4x+3$};
+
+    % 5. Các mốc tọa độ x = 1, x = 3 và gốc O
+    \node[below, font=\small, yshift=-2pt] at (1,0) {$1$};
+    \node[above, font=\small, yshift=2pt] at (3,0) {$3$};
+    \node[below left, font=\small] at (0,0) {$O$};
+
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Nghiệm của $f(x)=x^2-4x+3=0$ có nằm trong khoảng $(0;3)$ hay không? Trên hình, đồ thị đổi dấu tại đúng điểm đó, chia đoạn $[0;3]$ thành hai phần tô màu khác nhau: phần cyan (trên trục) và phần cam (dưới trục). Hãy xác định nghiệm này, xét dấu $f(x)$ trên mỗi đoạn con, rồi phá dấu trị tuyệt đối trước khi lập tích phân.
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+$f(x)=0$ có nghiệm $x=1$ và $x=3$; chỉ $x=1$ nằm trong $(0;3)$, nên ta xét dấu $f$ trên hai đoạn $[0;1]$ và $[1;3]$ bằng một giá trị đại diện trong mỗi đoạn, rồi phá trị tuyệt đối theo dấu tìm được trước khi tính hai tích phân thành phần.
+\end{hopyduong}
+
+\begin{loigiai}
+Xét phương trình hoành độ giao điểm với $Ox$: $x^2-4x+3=0 \Leftrightarrow x=1$ hoặc $x=3$. Nghiệm $x=1$ thuộc $(0;3)$ nên ta xét dấu trên hai đoạn $[0;1]$ và $[1;3]$.
+
+Với $x\in[0;1]$: chọn $x=0,5$, ta có $f(0{,}5)=0{,}25-2+3=1{,}25>0$.
+Với $x\in[1;3]$: chọn $x=2$, ta có $f(2)=4-8+3=-1<0$.
+
+Vậy
+\[
+S=\int_0^1 (x^2-4x+3)\dx + \int_1^3 -(x^2-4x+3)\dx.
+\]
+Ta có $\displaystyle\int (x^2-4x+3)\dx = \frac{x^3}{3}-2x^2+3x+C$. Do đó
+\[
+\int_0^1(x^2-4x+3)\dx = \left.\left(\frac{x^3}{3}-2x^2+3x\right)\right|_0^1 = \frac{4}{3},
+\qquad
+\int_1^3(x^2-4x+3)\dx = 0-\frac{4}{3}=-\frac{4}{3}.
+\]
+\ketqua{S=\frac{4}{3}+\frac{4}{3}=\frac{8}{3} \ (\text{đvdt})}
+\end{loigiai}
+
+\begin{hopsailam}[Sai lầm thường gặp]
+Một học sinh giải bài toán trên như sau:
+\[
+S=\int_0^3(x^2-4x+3)\dx = \left.\left(\frac{x^3}{3}-2x^2+3x\right)\right|_0^3 = 9-18+9=0,
+\]
+và kết luận diện tích bằng $0$.
+
+Sai lầm ở đây là học sinh đã \textbf{bỏ qua bước xét dấu $f(x)$ trên $[0;3]$}, tính thẳng một tích phân duy nhất từ $0$ đến $3$ mà không kiểm tra xem đồ thị có cắt trục hoành ở giữa đoạn hay không. Vì $f(x)$ đổi dấu tại $x=1$, phần diện tích trên $[0;1]$ (dương) và phần trên $[1;3]$ (âm) đã triệt tiêu lẫn nhau khi cộng trực tiếp, cho ra kết quả sai bằng $0$ thay vì đáp số đúng $\dfrac83$. Bài học rút ra: trước khi viết $S=\int_a^b f(x)\dx$, luôn phải kiểm tra $f(x)=0$ có nghiệm nào thuộc $(a;b)$ hay không.
+\end{hopsailam}
+
+\begin{hopvidu}[(Hàm lượng giác -- lời giải cho tình huống mở đầu)]
+Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y=\sin x$, trục hoành và hai đường thẳng $x=0$, $x=2\pi$.
+\end{hopvidu}
+
+\begin{hopyduong}[Ý tưởng giải]
+Đây chính là câu trả lời cho tình huống mở đầu: $\sin x\ge0$ trên $[0;\pi]$, $\sin x\le0$ trên $[\pi;2\pi]$. Diện tích thật sự phải bằng \emph{tổng} hai phần diện tích (đều dương), chứ không phải \emph{hiệu} như khi tính trực tiếp tích phân không dấu trị tuyệt đối.
+\end{hopyduong}
+
+\begin{loigiai}
+Trên $[0;2\pi]$, $\sin x=0$ tại $x=0,\pi,2\pi$; ta có $\sin x\ge0$ trên $[0;\pi]$ và $\sin x\le 0$ trên $[\pi;2\pi]$.
+\[
+S=\int_0^\pi \sin x\dx - \int_\pi^{2\pi}\sin x\dx = \big[-\cos x\big]_0^\pi - \big[-\cos x\big]_\pi^{2\pi} = 2-(-2)=4.
+\]
+\ketqua{S=4 \ (\text{đvdt})}
+\end{loigiai}
+
+\begin{hoptongket}[Tổng kết -- Vấn đề 1]
+\textbf{Em cần nhớ:}
+\begin{itemize}[leftmargin=1cm]
+  \item Diện tích luôn là đại lượng không âm, còn tích phân $\int_a^b f(x)\dx$ có thể mang dấu bất kỳ.
+  \item Khi $f(x)$ đổi dấu trên $[a;b]$, phải tìm nghiệm của $f(x)=0$ để chia nhỏ đoạn tích phân trước khi phá dấu trị tuyệt đối.
+\end{itemize}
+\textbf{Em cần biết suy nghĩ:}
+\begin{itemize}[leftmargin=1cm]
+  \item Đồ thị có đổi dấu trên đoạn đang xét hay không?
+  \item Nếu có, các điểm đổi dấu đó nằm ở đâu?
+  \item Sau khi chia đoạn, phần nào đóng góp dương, phần nào đóng góp âm vào tích phân gốc?
+\end{itemize}
+\end{hoptongket}
+
+\subsection{Vấn đề 2: Tính diện tích hình phẳng khi chưa biết cận}
+
+\begin{hopkhampha}[Tình huống]
+Một đề bài chỉ nói: ``Tính diện tích hình phẳng giới hạn bởi parabol $y=x^2-2x$ và đường thẳng $y=x$'', mà không hề cho hai giá trị $x=a$, $x=b$ như các bài trước. Vậy lấy đâu ra hai cận để tính tích phân?
+\end{hopkhampha}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, declare function={f(\x)=\x^2-2*\x; g(\x)=\x;}]
+  \begin{axis}[
+      axis lines=middle, 
+      xlabel={$x$}, ylabel={$y$},
+      xmin=-1.5, xmax=6.5, 
+      ymin=-1.5, ymax=6.5, 
+      xtick=\empty, ytick=\empty, 
+      width=10.5cm, height=8cm,
+      axis line style={-Latex, thick, color=black}, 
+      samples=100,
+      clip=false 
+    ]
+    
+    % 1. Tô màu phần diện tích giới hạn kẹp giữa 2 hàm số
+    \fill[cyan, fill opacity=0.3] 
+      plot[domain=0:3, smooth] (\x, {g(\x)}) -- 
+      plot[domain=3:0, smooth] (\x, {f(\x)}) -- cycle;
+
+    % 2. Đường gióng nét đứt hạ từ giao điểm xuống trục Ox
+    \draw[dashed, thick, black] (3,0) -- (3,3);
+
+    % 3. Hai đồ thị hàm số 
+    % Dùng sloped để nghiêng chữ, pos=0.85 để chọn vị trí trên đường cong
+    \addplot [domain=-0.8:3.6, navy, very thick] {f(x)} 
+      node[sloped, above, pos=0.9, font=\small] {$y=x^2-2x$};
+      
+    % Dùng sloped để nghiêng chữ, pos=0.75 để trượt chữ dọc theo đường y=x
+    \addplot [domain=-0.8:5.5, teal, very thick] {g(x)} 
+      node[sloped, above, pos=0.9, font=\small] {$y=x$};
+
+    % 4. Gốc tọa độ O
+    \node[below left,xshift=3pt, font=\small] at (0,0) {$O$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Trên hình, miền tô màu cyan chính là hình phẳng cần tính diện tích, nhưng đề bài không cho sẵn hai đường thẳng đứng $x=a$, $x=b$ như trước -- miền này tự khép kín tại chính hai điểm mà hai đồ thị \textbf{cắt nhau}. Vậy hai cận $a, b$ mà ta cần chính là hoành độ giao điểm của $(P)$ và $d$. Hãy giải phương trình $x^2-2x=x$ để tìm chúng, rồi xét xem trên khoảng giữa hai nghiệm đó, đường nào nằm trên, đường nào nằm dưới.
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+Chính các giao điểm của hai đồ thị đóng vai trò là hai đầu mút $a, b$ mà đề bài không nêu tường minh. Ta cần giải phương trình hoành độ giao điểm $f(x)=g(x)$ để tìm chúng. Nếu phương trình có nhiều hơn hai nghiệm phân biệt trong miền xét, hình phẳng bị chia thành nhiều miền con tách biệt, và ta phải chẻ tích phân theo từng đoạn giữa hai nghiệm liên tiếp -- giống hệt kỹ thuật xét dấu ở Vấn đề 1.
+\end{hopyduong}
+
+\begin{hopphuongphap}[Phương pháp giải chung -- Vấn đề 2]
+\begin{enumerate}[leftmargin=1cm]
+  \item Giải phương trình hoành độ giao điểm $f(x)=g(x)$ để tìm các cận $a,b$ (không có cận cho sẵn trong đề bài).
+  \item Nếu có nhiều hơn 2 nghiệm phân biệt trong miền xét, hình phẳng bị chia thành nhiều miền con -- phải chẻ tích phân theo từng đoạn giữa hai nghiệm liên tiếp.
+  \item Tính diện tích từng miền rồi cộng lại như Vấn đề 1.
+\end{enumerate}
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Parabol và đường thẳng)]
+Tính diện tích hình phẳng giới hạn bởi parabol $(P): y=x^2-2x$ và đường thẳng $d: y=x$  chính là tình huống mở đầu Vấn đề này.
+\end{hopvidu}
+
+\begin{hopyduong}[Ý tưởng giải]
+Giải $x^2-2x=x$ để tìm hai cận. Vì đây là phương trình bậc hai nên chỉ cho đúng hai nghiệm, do đó hình phẳng chỉ có một miền duy nhất -- không cần chẻ tích phân, chỉ cần xét dấu $d-(P)$ một lần trên khoảng giữa hai nghiệm.
+\end{hopyduong}
+
+\begin{loigiai}
+Phương trình hoành độ giao điểm: $x^2-2x=x \Leftrightarrow x^2-3x=0 \Leftrightarrow x=0$ hoặc $x=3$. Đây chính là hai cận $a=0,\,b=3$.
+
+Xét dấu $h(x)=x-(x^2-2x)=3x-x^2$ trên $(0;3)$: tại $x=1$, $h(1)=2>0$, nên $d$ nằm trên $(P)$.
+\[
+S=\int_0^3 (3x-x^2)\dx = \left.\left(\frac{3x^2}{2}-\frac{x^3}{3}\right)\right|_0^3 = \frac{27}{2}-9.
+\]
+\ketqua{S=\frac{9}{2} \ (\text{đvdt})}
+\end{loigiai}
+
+\begin{hopsailam}[Sai lầm thường gặp]
+Một học sinh giải bài toán trên như sau: sau khi tìm được hai giao điểm $x=0$ và $x=3$, viết thẳng
+\[
+S=\int_0^3\big[(x^2-2x)-x\big]\dx = \int_0^3(x^2-3x)\dx = \left.\left(\frac{x^3}{3}-\frac{3x^2}{2}\right)\right|_0^3 = 9-\frac{27}{2}=-\frac{9}{2},
+\]
+và kết luận diện tích bằng $-\dfrac92$.
+
+Sai lầm ở đây là học sinh đã lấy hiệu $(P)-d$ mà \textbf{không kiểm tra xem đường nào thực sự nằm trên}. Trên $(0;3)$, đường thẳng $d$ nằm trên parabol $(P)$ (chứ không phải ngược lại), nên biểu thức đúng phải là $d-(P)=3x-x^2\ge0$. Việc lấy sai thứ tự trừ khiến kết quả bị đổi dấu. Bài học rút ra: trước khi lập tích phân, luôn phải xét dấu $f(x)-g(x)$ (hoặc $g(x)-f(x)$) bằng một điểm đại diện, không được mặc định hàm nào trừ hàm nào.
+\end{hopsailam}
+
+\begin{hopvidu}[(Hai miền tách biệt - ba giao điểm)]
+Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^3$ và đường thẳng $y=x$.
+\end{hopvidu}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, declare function={f(\x)=\x^3; g(\x)=\x;}]
+  \begin{axis}[
+      axis lines=middle, 
+      xlabel={$x$}, ylabel={$y$},
+      xmin=-1.6, xmax=1.8, 
+      ymin=-1.6, ymax=1.8,
+      xtick=\empty, ytick=\empty, 
+      width=9cm, height=9cm,
+      axis line style={-Latex, thick, color=black}, 
+      samples=100,
+      clip=false
+    ]
+    
+    % 1. Tô màu miền diện tích 1 (từ x=-1 đến x=0) kẹp đúng giữa 2 đường
+    \fill[cyan, fill opacity=0.3] 
+      plot[domain=-1:0, smooth] (\x, {f(\x)}) -- 
+      plot[domain=0:-1, smooth] (\x, {g(\x)}) -- cycle;
+      
+    % 2. Tô màu miền diện tích 2 (từ x=0 đến x=1) kẹp đúng giữa 2 đường
+    \fill[amber, fill opacity=0.3] 
+      plot[domain=0:1, smooth] (\x, {f(\x)}) -- 
+      plot[domain=1:0, smooth] (\x, {g(\x)}) -- cycle;
+
+    % 3. Đường gióng nét đứt tại các giao điểm
+    \draw[dashed, thick, black] (-1,0) -- (-1,-1);
+    \draw[dashed, thick, black] (1,0) -- (1,1);
+
+    % 4. Các điểm tọa độ (căn chỉnh vị trí để không đè vào nét đứt)
+    \node[above, font=\small, yshift=2pt] at (-1,0) {$-1$};
+    \node[below, font=\small, yshift=-2pt] at (1,0) {$1$};
+    \node[below right, font=\small] at (0,0) {$O$};
+
+    % 5. Hai đồ thị hàm số (Dùng sloped để tên hàm uốn dọc theo nét vẽ)
+    \addplot [domain=-1.2:1.2, navy, very thick] {f(x)} 
+      node[sloped, above, pos=0.92, font=\small] {$y=x^3$};
+      
+    \addplot [domain=-1.5:1.6, teal, very thick] {g(x)} 
+      node[sloped, above, pos=0.98, font=\small] {$y=x$};
+
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Trên hình, phương trình $x^3-x=0$ cho ba nghiệm, chia miền thành hai phần tô màu khác nhau (cyan và cam) chứ không phải một miền liền mạch duy nhất. Hãy tìm cả ba nghiệm, xác định phần nào $y=x^3$ nằm trên $y=x$ và phần nào nằm dưới, rồi cân nhắc xem có thể gộp thành một tích phân duy nhất từ $-1$ đến $1$ hay phải tách thành hai tích phân riêng biệt.
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+Ba nghiệm $-1, 0, 1$ chia miền thành hai hình phẳng riêng biệt trên $[-1;0]$ và $[0;1]$, mỗi miền có dấu $x^3-x$ khác nhau (đổi dấu qua $x=0$). Cần tính diện tích từng miền rồi cộng lại, không được gộp thành một tích phân duy nhất từ $-1$ đến $1$ mà không phá dấu trị tuyệt đối.
+\end{hopyduong}
+
+\begin{loigiai}
+Phương trình hoành độ giao điểm: $x^3-x=0 \Leftrightarrow x(x-1)(x+1)=0 \Leftrightarrow x\in\{-1;0;1\}$. Ba nghiệm này chia miền thành \textbf{hai} hình phẳng riêng biệt: $[-1;0]$ và $[0;1]$.
+
+Xét dấu $h(x)=x^3-x$: trên $(-1;0)$, tại $x=-0{,}5$: $h=-0{,}125+0{,}5=0{,}375>0$; trên $(0;1)$, tại $x=0{,}5$: $h=0{,}125-0{,}5=-0{,}375<0$.
+\[
+S=\int_{-1}^{0}(x^3-x)\dx + \int_0^1 \big[-(x^3-x)\big]\dx.
+\]
+Với $F(x)=\dfrac{x^4}{4}-\dfrac{x^2}{2}$: $\displaystyle\int_{-1}^0(x^3-x)\dx = F(0)-F(-1)=0-\left(-\frac14\right)=\frac14$, và $\displaystyle\int_0^1(x^3-x)\dx=F(1)-F(0)=-\frac14$, nên miền thứ hai đóng góp $\frac14$.
+\ketqua{S=\frac14+\frac14=\frac12 \ (\text{đvdt})}
+\end{loigiai}
+
+\begin{hoptongket}[Tổng kết -- Vấn đề 2]
+\textbf{Em cần nhớ:}
+\begin{itemize}[leftmargin=1cm]
+  \item Khi đề bài không cho sẵn cận, các cận chính là hoành độ giao điểm của hai đồ thị, tìm được bằng cách giải $f(x)=g(x)$.
+  \item Nếu phương trình hoành độ giao điểm có nhiều hơn hai nghiệm phân biệt trong miền xét, hình phẳng bị tách thành nhiều miền con, mỗi miền phải tính riêng.
+\end{itemize}
+\textbf{Em cần biết suy nghĩ:}
+\begin{itemize}[leftmargin=1cm]
+  \item Hai đồ thị cắt nhau tại bao nhiêu điểm trong miền đang xét?
+  \item Giữa mỗi cặp giao điểm liên tiếp, đường nào nằm trên, đường nào nằm dưới?
+  \item Có thể dùng một tích phân duy nhất cho cả miền, hay bắt buộc phải chẻ nhỏ?
+\end{itemize}
+\end{hoptongket}
+\subsection{Vấn đề 3: Tính diện tích hình phẳng khi đề bài chỉ cho đồ thị}
+
+\begin{hopkhampha}[Tình huống]
+Một số đề thi chỉ đưa ra hình vẽ đồ thị $y=f(x)$, kèm theo vài dữ kiện về diện tích các phần tô màu, mà không hề cho biểu thức $f(x)$. Không có biểu thức thì không thể giải phương trình $f(x)=0$ để xét dấu như hai Vấn đề trước. Vậy phải làm sao?
+\end{hopkhampha}
+
+
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Cho hàm số $y=f(x)$ liên tục trên $[-2;4]$ có đồ thị như hình trên. Biết diện tích miền tô màu cyan (trên $[-2;1]$, phía trên trục $Ox$) bằng $3$ và diện tích miền tô màu cam (trên $[1;4]$, phía dưới trục $Ox$) bằng $5$. Hãy tính diện tích hình phẳng giới hạn bởi đồ thị $y=f(x)$, trục $Ox$ và hai đường $x=-2$, $x=4$. Không có biểu thức $f(x)$, nhưng đề bài đã cho biết diện tích của từng phần rồi -- vậy diện tích của cả hai miền cộng lại được tính như thế nào, và nó có phải là $\displaystyle\int_{-2}^4 f(x)\dx$ hay không?
+\end{hopgoiy}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, declare function={f(\x)=0.08*(\x-1)*(\x+3)*(\x-6);}]
+  % 1. Tô màu các miền diện tích (Cyan: dương, Amber: âm)
+  \fill[cyan, fill opacity=0.3]
+     (-2,0) -- plot[domain=-2:1, smooth, samples=100] (\x,{f(\x)}) -- (1,0) -- cycle;
+  \fill[amber, fill opacity=0.3]
+     (1,0) -- plot[domain=1:4, smooth, samples=100] (\x,{f(\x)}) -- (4,0) -- cycle;
+
+  % 2. Các trục tọa độ
+  \draw[-Latex, thick, black] (-3,0) -- (5.5,0) node[below right]{$x$};
+  \draw[-Latex, thick, black] (0,-3.5) -- (0,3) node[above left]{$y$};
+  \node[below left] at (0,0) {$O$};
+
+  % 3. Đồ thị hàm số y = f(x)
+  \draw[navy, very thick, domain=-2.5:4.5, samples=100, smooth] plot (\x, {f(\x)});
+  \node[navy, right, font=\bfseries] at (4.5, {f(4.5)}) {$y=f(x)$};
+
+  % 4. Đường gióng nét đứt (Chỉ vẽ phần nối từ Ox đến đồ thị)
+  \draw[dashed, thick, black] (-2,0) -- (-2,{f(-2)});
+  \draw[dashed, thick, black] (4,0) -- (4,{f(4)});
+  
+  % 5. Các mốc tọa độ x (Căn chỉnh né các đường nét đứt và đồ thị)
+  \node[below, font=\bfseries, text=black, yshift=-2pt] at (-2,0) {$-2$};
+  \node[above right, font=\bfseries, text=black] at (1,0) {$1$};
+  \node[above, font=\bfseries, text=black, yshift=2pt] at (4,0) {$4$};
+
+  % 6. Nhãn S1, S2 đặt ở lòng miền tô màu, né trục tung Oy (x=0)
+  \node[text=navy, font=\bfseries] at (-0.8, 0.9) {$S_1=3$};
+  \node[text=navy, font=\bfseries] at (2.8, -1.2) {$S_2=5$};
+\end{tikzpicture}
+\end{center}
+
+\begin{hopyduong}[Ý tưởng giải]
+Khi không có biểu thức, kỹ năng cần dùng là đọc hình: nhìn trực tiếp phần đồ thị nằm trên hay dưới trục hoành trên từng khoảng, từ đó phá dấu trị tuyệt đối bằng quan sát hình học thay vì xét dấu đại số. Diện tích luôn dương, nên không được cộng trực tiếp các tích phân có dấu, mà phải cộng các diện tích thành phần $S_1$ và $S_2$ (cả hai đều đã dương) lại với nhau.
+\end{hopyduong}
+
+\begin{hopphuongphap}[Phương pháp giải chung -- Vấn đề 3]
+\begin{enumerate}[leftmargin=1cm]
+  \item Quan sát trực tiếp trên hình: phần đồ thị nằm trên hay dưới trục hoành (hoặc đường cong kia) trên từng khoảng.
+  \item Dùng dữ kiện $\displaystyle\int$ đã cho (nếu có) để suy ra diện tích từng miền, có để ý dấu.
+  \item Cộng các miền diện tích (luôn dương) lại với nhau.
+\end{enumerate}
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Phân biệt tích phân và diện tích)]
+Cho hàm số $y=f(x)$ liên tục trên $[-2;4]$ có đồ thị như hình vẽ ở phần Quan sát. Biết diện tích miền tô màu (phía trên trục $Ox$, trên $[-2;1]$) bằng $3$ và diện tích miền tô màu cam (phía dưới trục $Ox$, trên $[1;4]$) bằng $5$. Tính diện tích hình phẳng giới hạn bởi đồ thị $y=f(x)$, trục $Ox$ và hai đường $x=-2$, $x=4$.
+\end{hopvidu}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9, declare function={f(\x)=0.08*(\x-1)*(\x+3)*(\x-6);}]
+  % 1. Tô màu các miền diện tích
+  \fill[cyan, fill opacity=0.3]
+     (-2,0) -- plot[domain=-2:1, smooth, samples=100] (\x,{f(\x)}) -- (1,0) -- cycle;
+  \fill[amber, fill opacity=0.3]
+     (1,0) -- plot[domain=1:4, smooth, samples=100] (\x,{f(\x)}) -- (4,0) -- cycle;
+
+  % 2. Các trục tọa độ
+  \draw[-Latex, thick, black] (-3,0) -- (5.5,0) node[below right]{$x$};
+  \draw[-Latex, thick, black] (0,-4) -- (0,3) node[above left]{$y$};
+  \node[below left] at (0,0) {$O$};
+
+  % 3. Đồ thị hàm số y = f(x)
+  \draw[navy, very thick, domain=-2.5:4.5, samples=100, smooth] plot (\x, {f(\x)});
+  \node[navy, right, font=\bfseries] at (4.5, {f(4.5)}) {$y=f(x)$};
+
+  % 4. Đường gióng nét đứt
+  \draw[dashed, thick, black] (-2,0) -- (-2,{f(-2)});
+  \draw[dashed, thick, black] (4,0) -- (4,{f(4)});
+  
+  % 5. Các mốc tọa độ x
+  \node[below, font=\bfseries, text=black] at (-2,0) {$-2$};
+  \node[above right, font=\bfseries, text=black] at (1,0) {$1$};
+  \node[above, font=\bfseries, text=black] at (4,0) {$4$};
+
+  % 6. Nhãn S1, S2 đặt ở chính giữa lòng miền tô màu, KHÔNG dùng fill trắng
+  \node[text=navy, font=\bfseries] at (-0.8, 0.9) {$S_1=3$};
+  \node[text=navy, font=\bfseries] at (2.7, -1.2) {$S_2=5$};
+\end{tikzpicture}
+\end{center}
+
+
+
+\begin{loigiai}
+Vì diện tích luôn dương nên ta không được cộng trực tiếp các tích phân có dấu, mà cộng các diện tích thành phần đã cho:
+\ketqua{S=S_1+S_2=3+5=8 \ (\text{đvdt})}
+\end{loigiai}
+
+\begin{hopsailam}[Sai lầm thường gặp]
+Một học sinh giải bài toán trên như sau: vì trên $[-2;1]$ có $\int f(x)\dx = S_1 = 3$ và trên $[1;4]$ có $\int f(x)\dx = -S_2 = -5$ (do phần này nằm dưới trục), nên
+\[
+S = \int_{-2}^4 f(x)\dx = 3+(-5) = -2,
+\]
+và học sinh kết luận diện tích bằng $-2$, hoặc lấy trị tuyệt đối rồi kết luận $S=2$.
+
+Sai lầm ở đây là học sinh đã đồng nhất diện tích với giá trị của tích phân $\int_{-2}^4 f(x)\dx$. Hai đại lượng này chỉ bằng nhau khi $f(x)$ không đổi dấu trên cả đoạn; còn khi $f(x)$ đổi dấu như ở bài này, tích phân $\int_{-2}^4 f(x)\dx=-2$ chỉ là hiệu của hai phần diện tích, hoàn toàn khác với diện tích thực của hình là tổng hai phần: $S=S_1+S_2=8$. Bài học rút ra: luôn phân biệt rõ giá trị tích phân trên đoạn và diện tích hình phẳng, đây là một trong những bẫy phổ biến nhất của câu hỏi trắc nghiệm Đúng/Sai.
+\end{hopsailam}
+
+\begin{hopvidu}[(Đọc đồ thị hai hàm số)]
+Cho hai hàm số $y=f(x)$ và $y=g(x)$ liên tục trên $[0;2]$, có đồ thị sao cho $f(x)\ge g(x)$ với mọi $x\in[0;2]$. Biết $\displaystyle\int_0^2 f(x)\dx=6$ và $\displaystyle\int_0^2 g(x)\dx=2$. Tính diện tích hình phẳng giới hạn bởi hai đồ thị và hai đường thẳng $x=0$, $x=2$.
+\end{hopvidu}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, declare function={f(\x)=0.9*\x^2-1.8*\x+3.2; g(\x)=0.3*\x+0.4;}]
+  \begin{axis}[
+      axis lines=middle,
+      xlabel={$x$}, ylabel={$y$},
+      xmin=-0.6, xmax=3,
+      ymin=-0.6, ymax=4.4,
+      xtick=\empty, ytick=\empty,
+      width=9cm, height=6.8cm,
+      axis line style={-Latex, thick, color=black},
+      samples=100,
+      clip=false
+    ]
+
+    \fill[cyan, fill opacity=0.3]
+      plot[domain=0:2, smooth] (\x,{f(\x)}) --
+      plot[domain=2:0, smooth] (\x,{g(\x)}) -- cycle;
+
+    \draw[dashed, thick, black] (0,0) -- (0,{f(0)});
+    \draw[dashed, thick, black] (2,0) -- (2,{f(2)});
+
+    \node[below, font=\small] at (0,0) {$O$};
+    \node[below, font=\small] at (2,0) {$2$};
+
+    \addplot [domain=-0.4:2.7, navy, very thick, smooth] {f(x)}
+      node[sloped, above, pos=0.9, font=\small] {$y=f(x)$};
+    \addplot [domain=-0.4:2.7, teal, very thick, smooth] {g(x)}
+      node[sloped, above, pos=0.95, font=\small] {$y=g(x)$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Đề bài đã khẳng định $f(x)\ge g(x)$ trên toàn bộ $[0;2]$, tức là $f(x)-g(x)\geq 0$ với mọi $x\in[0;2]$, nên không cần xét dấu hay chia nhỏ khoảng như các bài trước. Hãy khai triển diện tích thành hiệu của hai tích phân riêng lẻ đã biết giá trị.
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+Vì $f(x)\ge g(x)$ trên $[0;2]$ nên không cần xét dấu, chỉ cần tách tích phân của hiệu thành hiệu hai tích phân đã cho sẵn giá trị.
+\end{hopyduong}
+
+\begin{loigiai}
+Vì $f(x)\ge g(x)$ trên $[0;2]$ nên không cần xét dấu:
+\[
+S=\int_0^2\big[f(x)-g(x)\big]\dx = \int_0^2 f(x)\dx - \int_0^2 g(x)\dx.
+\]
+\ketqua{S=6-2=4 \ (\text{đvdt})}
+\end{loigiai}
+
+\begin{hoptongket}[Tổng kết -- Vấn đề 3]
+Em cần nhớ:
+\begin{itemize}[leftmargin=1cm]
+  \item Khi đề chỉ cho hình vẽ, hãy đọc trực tiếp vị trí đồ thị so với trục hoành (hoặc so với đồ thị kia) để phá dấu trị tuyệt đối, không cần biểu thức $f(x)$.
+  \item Diện tích của một miền bằng tổng các diện tích thành phần (luôn dương); tích phân trên cả đoạn chỉ là hiệu các phần đó khi hàm đổi dấu, hai đại lượng này không phải lúc nào cũng bằng nhau.
+\end{itemize}
+Em cần biết suy nghĩ:
+\begin{itemize}[leftmargin=1cm]
+  \item Trên từng khoảng, đồ thị nằm ở phía nào so với trục hoành hay so với đồ thị còn lại?
+  \item Dữ kiện tích phân đề bài cho là giá trị có dấu, hay đã là diện tích (luôn dương)?
+  \item Cuối cùng có cần cộng hay lấy hiệu các phần đã tính?
+\end{itemize}
+\end{hoptongket}
+
+\subsection{Vấn đề 4: Mô hình hóa toán học -- Bài toán thực tiễn}
+
+\begin{hopkhampha}[Tình huống]
+Một cổng chào có dạng Parabol tại một khu du lịch cần được sơn phủ toàn bộ mặt. Người thợ chỉ đo được hai số liệu thực tế: chiều cao đỉnh cổng và chiều rộng chân cổng. Làm sao chuyển hai số đo thực tế này thành một hàm số $y=f(x)$ để tính được diện tích cần sơn?
+\end{hopkhampha}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, declare function={f(\x)=-0.25*\x^2+4;}]
+  \begin{axis}[
+      axis lines=middle,
+      xlabel={$x$ (m)}, ylabel={$y$ (m)},
+      xmin=-5.8, xmax=6,
+      ymin=-1.5, ymax=5.2,
+      xtick=\empty, ytick=\empty,
+      width=9.5cm, height=6.5cm,
+      axis line style={-Latex, thick, color=black},
+      samples=100,
+      clip=false
+    ]
+
+    \fill[cyan, fill opacity=0.3]
+      plot[domain=-4:4, smooth] (\x,{f(\x)}) -- (4,0) -- (-4,0) -- cycle;
+
+    \draw[dashed, thick, black] (-4,0) -- (-4,4);
+    \draw[dashed, thick, black] (4,0) -- (4,4);
+    \draw[dashed, thick, black] (0,0) -- (0,4);
+
+    \node[below,xshift=2pt, font=\small] at (-4,0) {$-4$};
+    \node[below, font=\small] at (4,0) {$4$};
+    \node[above left, font=\small] at (0,4) {$4$};
+    \node[below right, font=\small] at (0,0) {$O$};
+
+    \addplot [domain=-4.9:4.9, navy, very thick, smooth] {f(x)}
+      node[sloped, above, pos=0.95, font=\small] {$y=f(x)$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Ta được toàn quyền chọn vị trí đặt gốc tọa độ $O$. Nếu đặt $O$ tại trung điểm chân cổng như trên hình, hai chân cổng sẽ có hoành độ đối nhau và đỉnh cổng nằm trên trục $Oy$, nhờ tính đối xứng của Parabol. Với chiều cao đỉnh $4$ m và chiều rộng chân $8$ m, hãy xác định tọa độ đỉnh và hai chân cổng, từ đó viết phương trình Parabol dạng $y=ax^2+c$ và suy ra diện tích cần sơn.
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+Chọn gốc $O$ tại trung điểm chân cổng để tận dụng tính đối xứng của Parabol: khi đó hai chân cổng có hoành độ đối nhau $\pm x_0$, và đỉnh nằm trên trục $Oy$. Việc này giúp phương trình chỉ còn một ẩn $a$ cần tìm, thay vì phải giải hệ nhiều ẩn nếu đặt gốc tùy tiện.
+\end{hopyduong}
+
+\begin{hopphuongphap}[Phương pháp giải chung -- Vấn đề 4]
+\begin{enumerate}[leftmargin=1cm]
+  \item Chọn hệ trục tọa độ $Oxy$ hợp lý (thường đặt gốc tại tâm đối xứng hoặc chân công trình) để biểu thức hàm số đơn giản nhất.
+  \item Dùng các dữ kiện hình học (chiều cao, chiều rộng, điểm đi qua) để xác định hàm số $y=f(x)$ mô tả biên của công trình.
+  \item Tính diện tích bằng tích phân, sau đó chuyển đổi sang đại lượng thực tế cần tìm (chi phí, thể tích đất đào, lượng vật liệu,\ldots).
+\end{enumerate}
+\end{hopphuongphap}
+
+\begin{hopvidu}[(Cổng chào hình Parabol)]
+Một cổng chào có hình dạng Parabol, chiều cao tại đỉnh là $4$ m, chiều rộng chân cổng là $8$ m. Người ta muốn sơn toàn bộ mặt cổng, biết $1$ lít sơn phủ được $5$ m$^2$. Hỏi cần dùng ít nhất bao nhiêu lít sơn?
+\end{hopvidu}
+
+\begin{loigiai}
+Đặt hệ trục tọa độ với gốc $O$ tại trung điểm chân cổng, trục $Oy$ đi qua đỉnh. Đỉnh Parabol là $(0;4)$, chân cổng là hai điểm $(\pm4;0)$ (vì rộng $8$ m). Parabol có dạng $y=ax^2+4$; thay $x=4,y=0$: $0=16a+4 \Rightarrow a=-\dfrac14$.
+
+Vậy $y=-\dfrac14x^2+4$. Diện tích mặt cổng:
+\begin{align*}
+S&=\int_{-4}^{4}\left(-\frac14x^2+4\right)\dx = 2\int_0^4\left(-\frac14x^2+4\right)\dx \\
+ &= 2\left.\left(-\frac{x^3}{12}+4x\right)\right|_0^4 = 2\left(-\frac{16}{3}+16\right)=\frac{64}{3}\text{ m}^2.
+\end{align*}
+Số lít sơn cần dùng: $\dfrac{64/3}{5}=\dfrac{64}{15}\approx4{,}27$ lít.
+\ketqua{\text{Cần ít nhất } 5 \text{ lít sơn (làm tròn lên)}}
+\end{loigiai}
+
+\begin{hopsailam}[Sai lầm thường gặp]
+Một học sinh giải bài toán trên như sau: đặt gốc $O$ tại chân cổng bên trái, cho rằng đỉnh Parabol có hoành độ $x=0$ (trùng với chân cổng), rồi viết ngay $y=ax^2+4$ và thay $x=8,y=0$ để tìm $a$.
+
+Sai lầm ở đây là học sinh đã đặt sai vị trí đỉnh: đỉnh của Parabol đối xứng nằm ở giữa hai chân cổng, tức tại $x=4$ (nếu chân trái là $x=0$, chân phải là $x=8$), chứ không trùng với chân cổng bên trái. Việc đặt gốc tọa độ không đi qua trục đối xứng khiến hàm số không còn dạng đơn giản $y=ax^2+c$ nữa, mà phải viết dưới dạng đầy đủ hơn với đỉnh không nằm trên trục $Oy$, dẫn đến lời giải phức tạp và dễ sai. Bài học rút ra: khi mô hình hóa một công trình có tính đối xứng, nên chọn gốc tọa độ ngay tại tâm đối xứng để phương trình luôn ở dạng gọn nhất.
+\end{hopsailam}
+
+\begin{hopvidu}[(Thể tích đất đào của đường hầm)]
+Một đường hầm có mặt cắt ngang dạng vòm Parabol, chiều rộng đáy $10$ m, chiều cao vòm $6$ m, chiều dài hầm $100$ m. Tính khối lượng đất cần đào (theo m$^3$) để tạo đường hầm.
+\end{hopvidu}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85, declare function={f(\x)=-0.24*\x^2+6;}]
+  \begin{axis}[
+      axis lines=middle,
+      xlabel={$x$ (m)}, ylabel={$y$ (m)},
+      xmin=-6.5, xmax=6.5,
+      ymin=-1.2, ymax=7,
+      xtick=\empty, ytick=\empty,
+      width=9.5cm, height=6.5cm,
+      axis line style={-Latex, thick, color=black},
+      samples=100,
+      clip=false
+    ]
+
+    \fill[cyan, fill opacity=0.3]
+      plot[domain=-5:5, smooth] (\x,{f(\x)}) -- (5,0) -- (-5,0) -- cycle;
+
+    \draw[dashed, thick, black] (-5,0) -- (-5,6);
+    \draw[dashed, thick, black] (5,0) -- (5,6);
+    \draw[dashed, thick, black] (0,0) -- (0,6);
+
+    \node[below, font=\small] at (-5,0) {$-5$};
+    \node[below, font=\small] at (5,0) {$5$};
+    \node[left, font=\small] at (0,6) {$6$};
+    \node[below, font=\small] at (0,0) {$O$};
+
+    \addplot [domain=-5.6:5.6, navy, very thick, smooth] {f(x)}
+      node[sloped, above, pos=0.92, font=\small] {$y=f(x)$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{hopgoiy}[Quan sát và gợi ý]
+Bài toán này có hai bước: trước tiên tính diện tích mặt cắt ngang (giống ví dụ cổng chào ở trên), sau đó liên hệ diện tích đó với thể tích của cả đường hầm dài $100$ m. Nếu mặt cắt ngang có diện tích $S$ không đổi dọc theo suốt chiều dài hầm, thể tích của khối đất hình lăng trụ đó được tính như thế nào từ $S$ và chiều dài?
+\end{hopgoiy}
+
+\begin{hopyduong}[Ý tưởng giải]
+Đây là bài toán liên ngành: trước tiên dùng diện tích mặt cắt ngang như ví dụ trên, sau đó nhân diện tích đó với chiều dài hầm để được thể tích, tương tự cách tính thể tích của một khối lăng trụ có đáy là mặt cắt và chiều cao là chiều dài hầm.
+\end{hopyduong}
+
+\begin{loigiai}
+Đặt gốc tọa độ tại trung điểm đáy vòm. Đỉnh vòm $(0;6)$, hai chân vòm $(\pm5;0)$. Parabol: $y=ax^2+6$, thay $x=5,y=0$: $a=-\dfrac{6}{25}$.
+
+Diện tích mặt cắt ngang:
+\begin{align*}
+S&=\int_{-5}^5\left(-\frac{6}{25}x^2+6\right)\dx = 2\int_0^5\left(-\frac{6}{25}x^2+6\right)\dx \\
+ &= 2\left(-\frac{6\cdot125}{75}+30\right)=2(-10+30)=40 \text{ m}^2.
+\end{align*}
+Thể tích đất đào bằng diện tích mặt cắt nhân chiều dài hầm:
+\ketqua{V=S\times100=40\times100=4000 \text{ m}^3}
+\end{loigiai}
+
+\begin{hoptongket}[Tổng kết -- Vấn đề 4]
+Em cần nhớ:
+\begin{itemize}[leftmargin=1cm]
+  \item Chọn hệ trục tọa độ tại tâm đối xứng của công trình để phương trình đường cong ở dạng đơn giản nhất.
+  \item Từ các số đo thực tế (chiều cao, chiều rộng), xác định tọa độ các điểm đặc biệt rồi suy ra hàm số mô tả biên.
+  \item Diện tích tính được có thể chuyển thành các đại lượng thực tế khác như thể tích, chi phí, lượng vật liệu.
+\end{itemize}
+Em cần biết suy nghĩ:
+\begin{itemize}[leftmargin=1cm]
+  \item Công trình có trục đối xứng không? Nếu có, nên đặt gốc tọa độ ở đâu?
+  \item Những điểm nào (đỉnh, chân, mép) có tọa độ xác định được ngay từ số liệu đề bài?
+  \item Sau khi có diện tích, đề bài còn yêu cầu chuyển đổi sang đại lượng nào khác không?
+\end{itemize}
+\end{hoptongket}
+
+\newpage
+
+
+\newpage

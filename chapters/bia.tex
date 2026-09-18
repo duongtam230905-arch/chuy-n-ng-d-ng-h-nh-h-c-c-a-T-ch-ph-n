@@ -1,1 +1,143 @@
+%% ================= TRANG BÌA =================
+%% ================= TRANG BÌA =================
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\newgeometry{margin=0cm}
+\begin{tikzpicture}[remember picture, overlay]
+\begin{scope}[shift={(current page.south west)}]
 
+  % ---------- LỚP 1: NỀN LAVENDER + LƯỚI Ô VUÔNG ----------
+  \fill[lavender] (0,0) rectangle (21,29.7);
+  \begin{scope}[line width=0.3pt, cyanaccent!35!white]
+    \foreach \x in {0,0.9,...,21} { \draw (\x,0) -- (\x,29.7); }
+    \foreach \y in {0,0.9,...,29.7} { \draw (0,\y) -- (21,\y); }
+  \end{scope}
+  \begin{scope}[line width=0.6pt, cyanaccent!55!white]
+    \foreach \x in {0,3.6,...,21} { \draw (\x,0) -- (\x,29.7); }
+    \foreach \y in {0,3.6,...,29.7} { \draw (0,\y) -- (21,\y); }
+  \end{scope}
+
+  % ---------- LỚP 2: ĐƯỜNG CONG LỚN XUYÊN TRANG ----------
+  \begin{scope}[opacity=0.15]
+    \fill[cyan] plot[domain=1:20, samples=60, smooth]
+      (\x,{6+13*(1-((\x-10.5)*(\x-10.5))/90.25)}) -- (20,4) -- (1,4) -- cycle;
+  \end{scope}
+  \draw[navy, line width=1.3pt, opacity=0.18, domain=1:20, samples=60, smooth]
+    plot (\x,{6+13*(1-((\x-10.5)*(\x-10.5))/90.25)});
+
+  % ---------- LỚP 3: KHỐI TIÊU ĐỀ 3D ----------
+  % Nới rộng khung: (3.4, 11.7) đến (17.6, 21.2)
+  \fill[navy!85!black, opacity=0.35, rounded corners=3pt]
+    ($(3.4,11.7)+(0.35,-0.35)$) rectangle ($(17.6,21.2)+(0.35,-0.35)$);
+  \draw[cyan, line width=1.6pt, rounded corners=3pt]
+    ($(3.4,11.7)+(0.15,-0.15)$) rectangle ($(17.6,21.2)+(0.15,-0.15)$);
+  \filldraw[fill=white, draw=navy, line width=2.3pt, rounded corners=3pt]
+    (3.4,11.7) rectangle (17.6,21.2);
+
+  \node[text=navy, font=\sansbold\fontsize{32}{36}\selectfont]
+    at (10.5,19.1) {ỨNG DỤNG HÌNH HỌC};
+  \node[text=navy, font=\sansbold\fontsize{32}{36}\selectfont]
+    at (10.5,17.2) {CỦA TÍCH PHÂN};
+  \draw[cyan, line width=1pt] (6.7,15.8) -- (14.3,15.8);
+  \node[text=navy!80!black, font=\sffamily\slshape\fontsize{13}{16}\selectfont]
+    at (10.5,14.5) {Chuyên đề: Diện tích hình phẳng \quad$\bullet$\quad Thể tích vật thể};
+
+  % ---------- LỚP 4: HAI HÌNH MINH HỌA LỚN (Đã phóng to & dời vào giữa) ----------
+  % Hình trái: Diện tích hình phẳng (Đã thêm trục Oxy, cận a, b)
+  \node[opacity=0.85] at (5.5, 8.5) {%
+    \begin{tikzpicture}[scale=0.55]
+      \fill[cyan, opacity=0.4]
+         (2,2.5) .. controls (4,6) and (6,6) .. (8,3.5)
+         .. controls (6,1.5) and (4,0.5) .. (2,2.5) -- cycle;
+      
+      \draw[-Latex, thick, navy] (-0.5,0) -- (10.5,0) node[below right] {$x$};
+      \draw[-Latex, thick, navy] (0,-0.5) -- (0,6.5) node[above left] {$y$};
+      \node[below left, navy] at (0,0) {$O$};
+
+      \draw[navy, thick]
+         (0.5,0) .. controls (0.8,0.5) and (1.2,1.1) .. (2,2.5)
+                 .. controls (4,6) and (6,6) .. (8,3.5)
+                 .. controls (8.8,2.5) and (9.2,2.0) .. (9.5,1.5);
+      \draw[teal, thick]
+         (0.5,4.5) .. controls (0.8,4.0) and (1.2,3.3) .. (2,2.5)
+                   .. controls (4,0.5) and (6,1.5) .. (8,3.5)
+                   .. controls (8.8,4.3) and (9.2,4.7) .. (9.5,5.0);
+                   
+      \draw[dashed, navy, opacity=0.8, thick] (2,0) node[below, font=\bfseries] {$a$} -- (2,2.5);
+      \draw[dashed, navy, opacity=0.8, thick] (8,0) node[below, font=\bfseries] {$b$} -- (8,3.5);
+    \end{tikzpicture}%
+  };
+
+  % Hình phải: Khối tròn xoay (Đã phóng to, thêm trục Oxy)
+  \node[opacity=0.85] at (15.5, 8.5) {%
+    \begin{tikzpicture}[declare function={f(\x)=sqrt(\x);}]
+      \begin{axis}[
+          hide axis,
+          xmin=-0.5, xmax=5.5, ymin=-2.8, ymax=3.2,
+          width=6.5cm, height=4.8cm,
+          clip=false, samples=60]
+          
+        \draw[-Latex, thick, navy] (-0.5,0) -- (5.2,0) node[below right] {$x$};
+        \draw[-Latex, thick, navy] (0,-2.5) -- (0,3.0) node[above left] {$y$};
+        \node[below left, navy] at (0,0) {$O$};
+
+        \fill[cyan, fill opacity=0.22]
+          plot[domain=0:4, smooth] (\x,{f(\x)}) -- (4,-2)
+          -- plot[domain=4:0, smooth] (\x,{-f(\x)}) -- cycle;
+        \fill[cyan, fill opacity=0.32] (4,0) ellipse (0.35 and 2);
+        
+        \draw[navy, thick] (4,-2) arc (-90:90:0.35 and 2);
+        \draw[navy, thick, dashed] (4,2) arc (90:270:0.35 and 2);
+        \draw[navy, thick, opacity=0.4] (2.5,-1.58) arc (-90:90:0.22 and 1.58);
+        \draw[navy, thick, dashed, opacity=0.4] (2.5,1.58) arc (90:270:0.22 and 1.58);
+        
+        \addplot[domain=0:4, navy, thick, smooth] {f(x)};
+        \addplot[domain=0:4, navy, thick, smooth] {-f(x)};
+      \end{axis}
+    \end{tikzpicture}%
+  };
+
+  % Khung công thức (Nằm ngay dưới 2 hình)
+  \node[draw=navy, draw opacity=0.6, rounded corners=3pt, fill=white, fill opacity=0.9,
+        text=navy, inner sep=5pt, font=\normalsize]
+    at (5.5, 5.0) {$S=\displaystyle\int_a^b\ababs{f(x)-g(x)}\dx$};
+
+  \node[draw=navy, draw opacity=0.6, rounded corners=3pt, fill=white, fill opacity=0.9,
+        text=navy, inner sep=5pt, font=\normalsize]
+    at (15.5, 5.0) {$V=\pi\displaystyle\int_a^b f^2(x)\dx$};
+
+  % ---------- LỚP 5: THÔNG TIN TÁC GIẢ (Đã hạ xuống dưới) ----------
+  \node[text=navy, font=\sffamily\bfseries\fontsize{14}{16}\selectfont]
+    at (10.5, 3.5) {Biên soạn: Thầy Tâm dạy Toán};
+  \node[text=navy!80!black, font=\sffamily\fontsize{12}{14}\selectfont]
+    at (10.5, 2.7) {Liên hệ (Zalo): 0837715745};
+
+  % ---------- LỚP 6: THANH TRÊN -- DÒNG BẮT BUỘC ----------
+  \fill[navy] (0,28.2) rectangle (21,29.7);
+  \node[text=white, font=\sffamily\bfseries\fontsize{11}{13}\selectfont]
+    at (10.5,28.95) {CHƯƠNG TRÌNH GIÁO DỤC PHỔ THÔNG 2018 -- MÔN TOÁN 12};
+
+  % ---------- LỚP 7: HUY HIỆU "TOÁN" + QUẢ CẦU VÀNG "12" ----------
+  \foreach \i in {1,...,8} { % chktex 11
+    \node[anchor=west, text=navybg, opacity=0.5,
+          font=\condbold\bfseries\fontsize{74}{74}\selectfont]
+      at ($(4.6,24.3)+(\i*0.014,-\i*0.014)$) {TOÁN};
+  }
+  \node[anchor=west, text=navytext, font=\condbold\bfseries\fontsize{74}{74}\selectfont]
+    at (4.6,24.3) {TOÁN};
+
+  % Đã dời quả cầu sang trái (x=14.0) và hạ thấp xuống (y=24.4) để cân bằng
+  \fill[black, opacity=0.10] ($(15.5,24)+(0.25,-0.25)$) circle (1.8);
+  \shade[ball color=gold] (15.5,24) circle (1.65);
+  \fill[white, opacity=0.28] ($(15.5,24)+(-0.53,0.53)$) circle (0.65);
+  \node[text=navybg, font=\sansbold\fontsize{44}{44}\selectfont] at (15.5,24) {12};
+  % ---------- LỚP 8: THANH DƯỚI -- PHIÊN BẢN ----------
+  \fill[navy] (0,0) rectangle (21,1.5);
+  \node[text=white, font=\sffamily\fontsize{10}{12}\selectfont]
+    at (10.5,0.75) {Phiên bản 1.0.0 \ $\vert$ \ Tháng 9/2026};
+
+  \end{scope}
+\end{tikzpicture}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\restoregeometry

@@ -1,1 +1,349 @@
+%% ============================================================
+%%  style.sty
+%%  Gói định dạng lõi cho chuyên đề "Ứng dụng hình học của Tích phân"
+%%  Biên soạn: Thầy Tâm dạy Toán
+%% ============================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assets/style}[2026/09/14 v1.0.0 Style cho chuyen de Tich phan 12]
+
+%% ---------- 1. Bảng mã & Ngôn ngữ (PDFLaTeX + gói vietnam) ----------
+%% GHI CHÚ: gói `vietnam` thuộc bộ `vntex` -- cần đảm bảo `vntex` đã
+%% được cài đặt (mặc định có sẵn trên Overleaf và hầu hết bản TeX Live/
+%% MiKTeX đầy đủ). Biên dịch bằng: pdflatex main.tex (chạy 2 lần).
+\RequirePackage[utf8]{vietnam}
+\RequirePackage{mathptmx} % Font giống Times New Roman
+
+%% ---------- 2. Bố cục trang ----------
+\RequirePackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,headheight=15pt]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage[inline]{enumitem}
+\RequirePackage{multicol}
+\RequirePackage{xcolor}
+
+
+%% ---------- 3. Toán học ----------
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{bm}
+
+%% ---------- 4. Đồ họa thuần túy (không dùng includegraphics) ----------
+\RequirePackage{tikz}
+\usetikzlibrary{calc,arrows.meta,positioning,patterns,decorations.markings,intersections,3d}
+\RequirePackage{fontawesome5}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%% ---------- 5. Hộp trình bày sư phạm ----------
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+
+%% ---------- 6. Bảng màu chủ đạo ----------
+\definecolor{navy}{HTML}{1C2E58}
+\definecolor{navylight}{HTML}{A9B8CE}
+\definecolor{teal}{HTML}{0F7A73}
+\definecolor{tealbg}{HTML}{E8F5F3}
+\definecolor{amber}{HTML}{B8720A}
+\definecolor{amberbg}{HTML}{FCF3E3}
+\definecolor{shadowgray}{HTML}{D7D7D7}
+\definecolor{softgray}{HTML}{F5F5F5}
+
+%bìa
+\definecolor{lavender}{HTML}{F2F0FA}
+\colorlet{cyanaccent}{cyan}
+\definecolor{gold}{HTML}{D4AF37}
+\colorlet{navytext}{navy}
+\definecolor{navybg}{HTML}{0F1B38}
+\newcommand{\sansbold}{\sffamily\bfseries}
+\newcommand{\condbold}{\sffamily}
+%% ---------- 7. Header / Footer ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small\bfseries\color{navy} Ứng dụng hình học của Tích phân}
+\fancyhead[R]{\small\color{navy} Toán 12 -- GDPT 2018}
+\fancyfoot[C]{\small\thepage}
+\fancyfoot[L]{\small\itshape Thầy Tâm dạy Toán}
+\fancyfoot[R]{\small\itshape Zalo: 0837715745}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+%% ---------- 8. Tiêu đề mục ----------
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection.}{0.5em}{}[{\color{navylight}\titlerule[1pt]}]
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{teal}}
+  {\thesubsection.}{0.5em}{}
+
+%% ---------- 9. Bộ đếm tự động (theo yêu cầu QA: không gõ chay số thứ tự) ----------
+\newcounter{dinhly}[section]
+\newcounter{vidu}[section]
+\newcounter{cauhoi}[section]
+\newcounter{chuy}[section]
+
+%% ---------- 10. Hộp Định lý / Công thức ----------
+\newtcolorbox{hopdinhly}[1][Định lý]{
+  enhanced, breakable,
+  colback=tealbg, colframe=teal,
+  coltitle=white, colbacktitle=teal,
+  boxrule=0.8pt, arc=2mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\refstepcounter{dinhly}\textbf{#1 \thedinhly}}
+}
+
+%% ---------- 11. Hộp Ví dụ ----------
+\newtcolorbox{hopvidu}[1][]{
+  enhanced, breakable,
+  colback=softgray, colframe=navy,
+  coltitle=white, colbacktitle=navy,
+  boxrule=0.8pt, arc=1.5mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\refstepcounter{vidu}\textbf{Ví dụ \thevidu} #1}
+}
+
+%% ---------- 12. Hộp Chú ý / Cảnh báo sai lầm ----------
+\newtcolorbox{hopchuy}[1][Chú ý]{
+  enhanced, breakable,
+  colback=amberbg, colframe=amber,
+  boxrule=0.8pt, arc=1.5mm, top=1.5mm, bottom=1.5mm,
+  fonttitle=\bfseries\color{amber},
+  title={\refstepcounter{chuy}\textbf{#1}}
+}
+
+%% ---------- 13. Hộp Phương pháp giải ----------
+\newtcolorbox{hopphuongphap}[1][Phương pháp giải]{
+  enhanced, breakable,
+  colback=white, colframe=navylight,
+  boxrule=1pt, arc=1mm, top=1.5mm, bottom=1.5mm,
+  fonttitle=\bfseries\color{navy},
+  title={\textbf{#1}}
+}
+
+%% ---------- 14. Môi trường lời giải ----------
+\newenvironment{loigiai}[1][]{%
+  \par\vspace{1mm}\setstretch{1.2}\noindent\textbf{\color{navy}Lời giải#1.}\quad
+}{%
+  \hfill$\blacksquare$\par\vspace{1mm}
+}
+
+%% ---------- 15. Câu hỏi trắc nghiệm tự đánh số ----------
+\newcommand{\cauhoi}{\refstepcounter{cauhoi}\noindent\textbf{Câu \thecauhoi.}\ }
+
+%% ---------- 16. Môi trường Trắc nghiệm (Macro cá nhân hóa) ----------
+\RequirePackage{tabularx}
+\RequirePackage{colortbl} % Cần thiết để đổi màu đường kẻ bảng
+
+\newcounter{cau}[section]
+
+% ================= MACRO CÂU HỎI =================
+\newcommand{\cau}[1]{%
+    \stepcounter{cau}%
+    \par\vspace{8pt}\noindent
+    \setbox0=\hbox{\textbf{\textcolor{navy}{Câu \thecau.\ }}}%
+    \hangindent=\wd0 \hangafter=1
+    \usebox0\textcolor{black}{#1}\par
+}
+
+% ================= MACRO VẼ HÌNH TRÒN ĐÁP ÁN =================
+\newcommand{\optbox}[2]{%
+    \def\cur{#1}\def\ans{#2}%
+    \ifx\cur\ans
+        \tikz[baseline=(char.base)] \node[shape=circle, draw=teal, thick, fill=teal, text=white, minimum size=1.35em, inner sep=0pt, font=\bfseries] (char) {#1};%
+    \else
+        \tikz[baseline=(char.base)] \node[shape=circle, draw=navy, thick, fill=white, text=navy, minimum size=1.2em, inner sep=0pt, font=\bfseries] (char) {#1};%
+    \fi
+}
+
+% ================= MACRO PHƯƠNG ÁN (6 THAM SỐ) =================
+% #1, #2, #3, #4: Nội dung 4 phương án
+% #5: Số cột (1, 2, hoặc 4)
+% #6: Đáp án đúng (A, B, C, D). Để trống {} thì không tô màu.
+\newcommand{\phuongan}[6]{%
+    \par\vspace{6pt}\noindent%
+    \def\tempA{#1}\def\tempB{#2}\def\tempC{#3}\def\tempD{#4}%
+    %
+    \ifnum#5=1
+        % --- CHẾ ĐỘ 1 DÒNG ---
+        \begin{tabular}{@{}*{4}{p{\dimexpr(\linewidth-6\tabcolsep)/4\relax}}@{}}
+            \ifx\tempA\empty\else\optbox{A}{#6}~#1\fi & 
+            \ifx\tempB\empty\else\optbox{B}{#6}~#2\fi & 
+            \ifx\tempC\empty\else\optbox{C}{#6}~#3\fi & 
+            \ifx\tempD\empty\else\optbox{D}{#6}~#4\fi
+        \end{tabular}%
+    \else\ifnum#5=2
+        % --- CHẾ ĐỘ 2 DÒNG ---
+        \def\hanghai{}% 
+        \ifx\tempC\empty
+            \ifx\tempD\empty
+            \else
+                \def\hanghai{\\[0.3cm] & \optbox{D}{#6}~#4}%
+            \fi
+        \else
+            \ifx\tempD\empty
+                \def\hanghai{\\[0.3cm] \optbox{C}{#6}~#3 & }%
+            \else
+                \def\hanghai{\\[0.3cm] \optbox{C}{#6}~#3 & \optbox{D}{#6}~#4}%
+            \fi
+        \fi
+        \begin{tabular}{@{}*{2}{p{\dimexpr(\linewidth-2\tabcolsep)/2\relax}}@{}}
+            \ifx\tempA\empty\else\optbox{A}{#6}~#1\fi & \ifx\tempB\empty\else\optbox{B}{#6}~#2\fi \hanghai
+        \end{tabular}%
+    \else\ifnum#5=4
+        % --- CHẾ ĐỘ 4 DÒNG ---
+        \def\hangB{}\def\hangC{}\def\hangD{}%
+        \ifx\tempB\empty\else\def\hangB{\\[0.3cm] \optbox{B}{#6}~#2}\fi
+        \ifx\tempC\empty\else\def\hangC{\\[0.3cm] \optbox{C}{#6}~#3}\fi
+        \ifx\tempD\empty\else\def\hangD{\\[0.3cm] \optbox{D}{#6}~#4}\fi
+        \begin{tabular}{@{}p{\linewidth}@{}}
+            \ifx\tempA\empty\else\optbox{A}{#6}~#1\fi \hangB \hangC \hangD
+        \end{tabular}%
+    \fi\fi\fi
+    \vspace{3pt}%
+}
+
+% ================= MACRO DẤU TÍCH =================
+\newcommand{\dautich}{%
+    \tikz[baseline=-0.6ex, scale=0.75]{ 
+        \fill[teal, rounded corners=1pt]
+        (0.1, 0.4) -- (0.35, 0.15) -- (0.8, 0.7) -- (0.95, 0.55) -- (0.35, -0.2) -- (-0.05, 0.25) -- cycle; 
+    }%
+}
+
+% ================= MACRO BẢNG ĐÚNG/SAI (8 THAM SỐ) =================
+\newcommand{\bangdungsai}[8]{%
+    \par\vspace{6pt}\noindent
+    \begingroup 
+    \def\ansA{#5}\def\ansB{#6}\def\ansC{#7}\def\ansD{#8}%
+    \def\valD{Đ}\def\valS{S}%
+    
+    \arrayrulecolor{navy}% Đổi màu viền bảng
+    \renewcommand{\arraystretch}{1.6}% 
+    \setlength{\arrayrulewidth}{1pt}% 
+    
+    \noindent\makebox[\linewidth][c]{%
+        \begin{tabularx}{\linewidth}{@{} >{\centering\arraybackslash}p{1cm} | X | >{\centering\arraybackslash}p{1.2cm} | >{\centering\arraybackslash}p{1.2cm} @{}}
+            & \centering\textbf{\textcolor{navy}{Mệnh đề}} & \textbf{\textcolor{navy}{Đúng}} & \textbf{\textcolor{navy}{Sai}} \\
+            \hline
+            \textbf{\textcolor{navy}{(a)}} & \textcolor{black}{#1} & \ifx\ansA\valD\dautich\fi & \ifx\ansA\valS\dautich\fi \\
+            \hline
+            \textbf{\textcolor{navy}{(b)}} & \textcolor{black}{#2} & \ifx\ansB\valD\dautich\fi & \ifx\ansB\valS\dautich\fi \\
+            \hline
+            \textbf{\textcolor{navy}{(c)}} & \textcolor{black}{#3} & \ifx\ansC\valD\dautich\fi & \ifx\ansC\valS\dautich\fi \\
+            \hline
+            \textbf{\textcolor{navy}{(d)}} & \textcolor{black}{#4} & \ifx\ansD\valD\dautich\fi & \ifx\ansD\valS\dautich\fi \\
+        \end{tabularx}%
+    }%
+    \par
+    \endgroup
+    \arrayrulecolor{black}% 
+    \par\vspace{10pt}%
+}
+
+% ================= MACRO ĐIỀN ĐÁP ÁN TRẢ LỜI NGẮN (4 THAM SỐ) =================
+\newcommand{\traloi}[4]{%
+    \par\vspace{5pt}
+    \hfill 
+    \setlength{\arrayrulewidth}{1pt}
+    \begin{tikzpicture}
+        \node[draw=navy, thick, minimum height=0.8cm, text=navy, font=\bfseries, inner sep=5pt, anchor=east] at (0,0) {Trả lời};
+        
+        \draw[navy, thick] (0.0, -0.4) rectangle (1.2, 0.4);
+        \draw[navy, thick] (1.2, -0.4) rectangle (2.4, 0.4);
+        \draw[navy, thick] (2.4, -0.4) rectangle (3.6, 0.4);
+        \draw[navy, thick] (3.6, -0.4) rectangle (4.8, 0.4);
+        
+        \def\ansA{#1}
+        \ifx\ansA\empty\else \node[text=black, font=\large\bfseries] at (0.6, 0) {#1}; \fi
+        
+        \def\ansB{#2}
+        \ifx\ansB\empty\else \node[text=black, font=\large\bfseries] at (1.8, 0) {#2}; \fi
+        
+        \def\ansC{#3}
+        \ifx\ansC\empty\else \node[text=black, font=\large\bfseries] at (3.0, 0) {#3}; \fi
+        
+        \def\ansD{#4}
+        \ifx\ansD\empty\else \node[text=black, font=\large\bfseries] at (4.2, 0) {#4}; \fi
+    \end{tikzpicture}\par\vspace{10pt}
+}
+
+
+%% ---------- 20. Màu bổ sung ----------
+\definecolor{ruby}{HTML}{A02334}
+\definecolor{rubybg}{HTML}{FBEAEC}
+\definecolor{sky}{HTML}{1C6E8C}
+\definecolor{skybg}{HTML}{E7F2F6}
+
+%% ============================================================
+%%  CẬP NHẬT v3.1: Gộp hộp Quan sát/Gợi ý, sửa tiêu đề hộp Ý tưởng,
+%%  đổi tên hộp Sai lầm thường gặp, bỏ hộp Kiểm tra
+%% ============================================================
+
+%% ---------- Màu cyan dùng tô miền diện tích trong mọi hình vẽ ----------
+\definecolor{cyan}{HTML}{00B4D8}
+\definecolor{cyanbg}{HTML}{E6F8FC}
+
+%% ---------- 5b. Dãn dòng trong các hộp cho dễ đọc ----------
+\RequirePackage{setspace}
+\tcbset{before upper={\setstretch{1.2}}}
+%% ---------- Hộp Tình huống (giữ nguyên) ----------
+\newtcolorbox{hopkhampha}[1][Tình huống]{
+  enhanced, breakable,
+  colback=violetbg, colframe=violet,
+  coltitle=white, colbacktitle=violet,
+  boxrule=0.9pt, arc=2mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\faMapSigns\ \textbf{#1}}
+}
+
+%% ---------- Hộp Quan sát và gợi ý (đã gộp, viết ngắn gọn 1 đoạn) ----------
+\newtcolorbox{hopgoiy}[1][Quan sát và gợi ý]{
+  enhanced, breakable,
+  colback=skybg, colframe=sky,
+  coltitle=white, colbacktitle=sky,
+  boxrule=0.8pt, arc=1.5mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\faSearch\ \textbf{#1}}
+}
+
+%% ---------- Hộp Ý tưởng giải (đã sửa: có thanh tiêu đề rõ ràng) ----------
+\newtcolorbox{hopyduong}[1][Ý tưởng giải]{
+  enhanced, breakable,
+  colback=ideabg, colframe=ideaframe,
+  coltitle=white, colbacktitle=ideaframe,
+  boxrule=0.9pt, arc=1.5mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\faLightbulb\ \textbf{#1}}
+}
+
+%% ---------- Hộp Sai lầm thường gặp (đổi tên, đặt sau lời giải) ----------
+\newtcolorbox{hopsailam}[1][Sai lầm thường gặp]{
+  enhanced, breakable,
+  colback=rubybg, colframe=ruby,
+  coltitle=white, colbacktitle=ruby,
+  boxrule=0.9pt, arc=1.5mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\faBug\ \textbf{#1}}
+}
+
+%% ---------- Hộp Tổng kết (giữ nguyên) ----------
+\newtcolorbox{hoptongket}[1][Tổng kết]{
+  enhanced, breakable,
+  colback=navylight!15, colframe=navy,
+  coltitle=white, colbacktitle=navy,
+  boxrule=1pt, arc=1.5mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries,
+  title={\faClipboardList\ \textbf{#1}}
+}
+
+\endinput
 
